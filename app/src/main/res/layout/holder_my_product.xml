@@ -24,8 +24,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_toEndOf="@+id/holderMyProduct_imgProductImage"
-            android:layout_toRightOf="@+id/holderMyProduct_imgProductImage"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
             android:orientation="vertical"
             android:padding="5dp">
 

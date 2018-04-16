@@ -27,10 +27,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:testOnly="true"
         android:theme="@style/AppTheme" >
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.buah.farmconnect.fileprovider"
+            android:authorities="com.buah.memberplanet.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true" >
             <meta-data
@@ -43,7 +44,7 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name="com.buah.farmconnect.activity.ActivityHome" >
+        <activity android:name="com.buah.memberplanet.activity.ActivityHome" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -51,76 +52,76 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.buah.farmconnect.activity.ActivityViewProduct"
-            android:parentActivityName="com.buah.farmconnect.activity.ActivityHome" >
+            android:name="com.buah.memberplanet.activity.ActivityViewProduct"
+            android:parentActivityName="com.buah.memberplanet.activity.ActivityHome" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.ActivityHome" />
+                android:value="com.buah.memberplanet.activity.ActivityHome" />
         </activity>
         <activity
-            android:name="com.buah.farmconnect.activity.ActivityAddProduct"
-            android:parentActivityName="com.buah.farmconnect.activity.ActivityHome" >
+            android:name="com.buah.memberplanet.activity.ActivityAddProduct"
+            android:parentActivityName="com.buah.memberplanet.activity.ActivityHome" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.ActivityHome" />
+                android:value="com.buah.memberplanet.activity.ActivityHome" />
         </activity>
         <activity
-            android:name="com.buah.farmconnect.activity.ActivityLogin"
-            android:parentActivityName="com.buah.farmconnect.activity.ActivityHome" >
+            android:name="com.buah.memberplanet.activity.ActivityLogin"
+            android:parentActivityName="com.buah.memberplanet.activity.ActivityHome" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.ActivityHome" />
+                android:value="com.buah.memberplanet.activity.ActivityHome" />
         </activity>
         <activity
-            android:name="com.buah.farmconnect.activity.ActivityMyAccount"
-            android:parentActivityName="com.buah.farmconnect.activity.ActivityHome" >
+            android:name="com.buah.memberplanet.activity.ActivityMyAccount"
+            android:parentActivityName="com.buah.memberplanet.activity.ActivityHome" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.ActivityHome" />
+                android:value="com.buah.memberplanet.activity.ActivityHome" />
         </activity>
         <activity
-            android:name="com.buah.farmconnect.activity.ActivitySignUp"
-            android:parentActivityName="com.buah.farmconnect.activity.ActivityHome" >
+            android:name="com.buah.memberplanet.activity.ActivitySignUp"
+            android:parentActivityName="com.buah.memberplanet.activity.ActivityHome" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.ActivityHome" />
+                android:value="com.buah.memberplanet.activity.ActivityHome" />
         </activity>
         <activity
-            android:name="com.buah.farmconnect.activity.ActivityEditProfile"
-            android:parentActivityName="com.buah.farmconnect.activity.ActivityHome" >
+            android:name="com.buah.memberplanet.activity.ActivityEditProfile"
+            android:parentActivityName="com.buah.memberplanet.activity.ActivityHome" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.ActivityHome" />
+                android:value="com.buah.memberplanet.activity.ActivityHome" />
         </activity>
         <activity
-            android:name="com.buah.farmconnect.activity.ActivityEditProduct"
-            android:parentActivityName="com.buah.farmconnect.activity.ActivityMyAccount" >
+            android:name="com.buah.memberplanet.activity.ActivityEditProduct"
+            android:parentActivityName="com.buah.memberplanet.activity.ActivityMyAccount" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.ActivityMyAccount" />
+                android:value="com.buah.memberplanet.activity.ActivityMyAccount" />
         </activity>
         <activity
-            android:name="com.buah.farmconnect.activity.VideoViewActivity"
-            android:parentActivityName="com.buah.farmconnect.activity.ActivityViewProduct" >
+            android:name="com.buah.memberplanet.activity.VideoViewActivity"
+            android:parentActivityName="com.buah.memberplanet.activity.ActivityViewProduct" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.ActivityViewProduct" />
+                android:value="com.buah.memberplanet.activity.ActivityViewProduct" />
         </activity>
         <activity
-            android:name="com.buah.farmconnect.activity.ActivityMyProduct"
-            android:parentActivityName="com.buah.farmconnect.activity.ActivityHome" >
+            android:name="com.buah.memberplanet.activity.ActivityMyProduct"
+            android:parentActivityName="com.buah.memberplanet.activity.ActivityHome" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.ActivityHome" />
+                android:value="com.buah.memberplanet.activity.ActivityHome" />
         </activity>
-        <activity android:name="com.buah.farmconnect.WebActivity" />
-        <activity android:name="com.buah.farmconnect.activity.ActivityForgotPassword" />
+        <activity android:name="com.buah.memberplanet.WebActivity" />
+        <activity android:name="com.buah.memberplanet.activity.ActivityForgotPassword" />
         <activity
-            android:name="com.buah.farmconnect.activity.ActivityEditPassword"
-            android:parentActivityName="com.buah.farmconnect.activity.ActivityEditProfile" >
+            android:name="com.buah.memberplanet.activity.ActivityEditPassword"
+            android:parentActivityName="com.buah.memberplanet.activity.ActivityEditProfile" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.ActivityEditProfile" />
+                android:value="com.buah.memberplanet.activity.ActivityEditProfile" />
         </activity>
         <activity
             android:name="com.google.android.gms.common.api.GoogleApiActivity"

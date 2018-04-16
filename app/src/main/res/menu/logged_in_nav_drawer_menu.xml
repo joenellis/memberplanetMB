@@ -17,7 +17,11 @@
         <item
             android:id="@+id/nav_item_category"
             android:icon="@drawable/ic_collections"
-            android:title="@string/navCategories" />
+            android:title="@string/navGroups" />
+        <item
+            android:id="@+id/nav_item_transaction"
+            android:icon="@drawable/ic_collections"
+            android:title="@string/navtransaction" />
     </group>
 
     <item android:title="Extras">

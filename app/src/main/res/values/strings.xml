@@ -74,12 +74,13 @@
     <!-- Navigation Drawer Strings -->
     <string name="navHome">News Feeds</string>
     <string name="navMyAccount">My Account</string>
-    <string name="navCategories">Year Groups</string>
+    <string name="navGroups">Year Groups</string>
     <string name="navFilter">Filter</string>
     <string name="navMyProducts">Members</string>
     <string name="navWishList">My Wish List</string>
     <string name="navLogout">Logout</string>
     <string name="navAddProduct">Add Product</string>
+    <string name="navtransaction">Transaction</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

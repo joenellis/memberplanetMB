@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.buah.farmconnect">
+    package="com.buah.memberplanet">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -24,7 +24,7 @@
 
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.buah.farmconnect.fileprovider"
+            android:authorities="com.buah.memberplanet.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -38,7 +38,7 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".activity.ActivityHome">
+        <activity android:name="com.buah.memberplanet.activity.ActivityHome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -46,77 +46,70 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.ActivityViewProduct"
-            android:parentActivityName=".activity.ActivityHome">
+            android:name="com.buah.memberplanet.activity.ActivityViewProduct"
+            android:parentActivityName="com.buah.memberplanet.activity.ActivityHome">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.ActivityHome" />
+                android:value="com.buah.memberplanet.activity.ActivityHome" />
         </activity>
         <activity
-            android:name=".activity.ActivityAddProduct"
-            android:parentActivityName=".activity.ActivityHome">
+            android:name="com.buah.memberplanet.activity.ActivityAddProduct"
+            android:parentActivityName="com.buah.memberplanet.activity.ActivityHome">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.ActivityHome" />
+                android:value="com.buah.memberplanet.activity.ActivityHome" />
         </activity>
         <activity
-            android:name=".activity.ActivityLogin"
-            android:parentActivityName=".activity.ActivityHome">
+            android:name="com.buah.memberplanet.activity.ActivityLogin"
+            android:parentActivityName="com.buah.memberplanet.activity.ActivityHome">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.ActivityHome" />
+                android:value="com.buah.memberplanet.activity.ActivityHome" />
         </activity>
         <activity
-            android:name=".activity.ActivityMyAccount"
-            android:parentActivityName=".activity.ActivityHome">
+            android:name="com.buah.memberplanet.activity.ActivityMyAccount"
+            android:parentActivityName="com.buah.memberplanet.activity.ActivityHome">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.ActivityHome" />
+                android:value="com.buah.memberplanet.activity.ActivityHome" />
         </activity>
         <activity
-            android:name=".activity.ActivitySignUp"
-            android:parentActivityName=".activity.ActivityHome">
+            android:name="com.buah.memberplanet.activity.ActivitySignUp"
+            android:parentActivityName="com.buah.memberplanet.activity.ActivityHome">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.ActivityHome" />
+                android:value="com.buah.memberplanet.activity.ActivityHome" />
         </activity>
         <activity
-            android:name=".activity.ActivityEditProfile"
-            android:parentActivityName=".activity.ActivityHome">
+            android:name="com.buah.memberplanet.activity.ActivityEditProfile"
+            android:parentActivityName="com.buah.memberplanet.activity.ActivityHome">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.ActivityHome" />
+                android:value="com.buah.memberplanet.activity.ActivityHome" />
         </activity>
         <activity
-            android:name=".activity.ActivityEditProduct"
-            android:parentActivityName=".activity.ActivityMyAccount">
+            android:name="com.buah.memberplanet.activity.ActivityEditProduct"
+            android:parentActivityName="com.buah.memberplanet.activity.ActivityMyAccount">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.ActivityMyAccount" />
+                android:value="com.buah.memberplanet.activity.ActivityMyAccount" />
         </activity>
         <activity
-            android:name=".activity.VideoViewActivity"
-            android:parentActivityName=".activity.ActivityViewProduct">
+            android:name="com.buah.memberplanet.activity.ActivityMyProduct"
+            android:parentActivityName="com.buah.memberplanet.activity.ActivityHome">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.ActivityViewProduct" />
+                android:value="com.buah.memberplanet.activity.ActivityHome" />
         </activity>
-        <activity
-            android:name=".activity.ActivityMyProduct"
-            android:parentActivityName=".activity.ActivityHome">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.ActivityHome" />
-        </activity>
-        <activity android:name=".WebActivity" />
-        <activity android:name=".activity.ActivityForgotPassword" />
+        <activity android:name="com.buah.memberplanet.WebActivity" />
+        <activity android:name="com.buah.memberplanet.activity.ActivityForgotPassword" />
 
         <activity
-            android:name=".activity.ActivityEditPassword"
-            android:parentActivityName=".activity.ActivityEditProfile">
+            android:name="com.buah.memberplanet.activity.ActivityEditPassword"
+            android:parentActivityName="com.buah.memberplanet.activity.ActivityEditProfile">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.ActivityEditProfile" />
+                android:value="com.buah.memberplanet.activity.ActivityEditProfile" />
         </activity>
     </application>
 
