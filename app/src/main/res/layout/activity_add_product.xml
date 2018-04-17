@@ -7,7 +7,7 @@
 
     <include layout="@layout/toolbar" />
 
-    <com.buah.memberplanet.view.CustomViewPager
+    <com.ellis.memberplanet.view.CustomViewPager
         android:id="@+id/addProduct_viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

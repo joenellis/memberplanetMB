@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.buah.memberplanet.activity.ActivityHome"
+    tools:context="com.ellis.memberplanet.activity.ActivityHome"
     tools:showIn="@layout/home_app_bar">
 
 </android.support.design.widget.CoordinatorLayout>
