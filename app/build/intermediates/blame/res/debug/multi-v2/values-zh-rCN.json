@@ -4,6 +4,23 @@
             "outputFile": "/Users/joenellis/Desktop/memberplanetMB/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rCN/values-zh-rCN.xml",
             "map": [
                 {
+                    "source": "/Users/joenellis/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/058f629bc1d286143ce9b900ee44a2a8/res/values-zh-rCN/values-zh-rCN.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,104,151,238",
+                        "endColumns": "48,46,86,68",
+                        "endOffsets": "99,146,233,302"
+                    },
+                    "to": {
+                        "startLines": "38,39,40,41",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "4081,4130,4177,4264",
+                        "endColumns": "48,46,86,68",
+                        "endOffsets": "4125,4172,4259,4328"
+                    }
+                },
+                {
                     "source": "/Users/joenellis/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/b16850c1a2b5b5fb8d94629777d71b12/res/values-zh-rCN/values-zh-rCN.xml",
                     "from": {
                         "startLines": "2",

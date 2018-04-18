@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.ellis.memberplanet.R;
 import com.ellis.memberplanet.fragment.FragmentCategory;
+import com.ellis.memberplanet.fragment.FragmentEvent;
 import com.ellis.memberplanet.fragment.FragmentHome;
 import com.ellis.memberplanet.fragment.FragmentMyProduct;
 import com.ellis.memberplanet.fragment.TransFragment;
@@ -182,6 +183,17 @@ public class ActivityHome extends AppCompatActivity {
                 mCurrentFragment = fragmentHome;
                 break;
 
+            case "Events":
+                FragmentEvent fragmentEvent = new FragmentEvent();
+                mFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.homeLayout, fragmentEvent, TAG)
+                        .commit();
+
+                mToolbar.setTitle(TAG);
+                mCurrentFragment = fragmentEvent;
+                break;
+
             case "Year Groups":
                 FragmentCategory fragmentCategory = new FragmentCategory();
                 mFragmentManager
@@ -240,7 +252,11 @@ public class ActivityHome extends AppCompatActivity {
                 setHomeFragment("News Feeds");
                 break;
 
-            case R.id.nav_item_products:
+            case R.id.nav_item_events:
+                setHomeFragment("Events");
+                break;
+
+            case R.id.nav_item_members:
                 setHomeFragment("Members");
                 break;
 
@@ -256,8 +272,8 @@ public class ActivityHome extends AppCompatActivity {
                 gotoActivity(new ActivityMyAccount());
                 break;
 
-            case R.id.nav_item_addProduct:
-                gotoActivity(new ActivityAddProduct());
+            case R.id.nav_item_scan:
+                gotoActivity(new ActivityScan());
                 break;
 
             case R.id.nav_item_login:

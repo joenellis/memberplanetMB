@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Farm Connect</string>
+    <string name="app_name">Member Planet</string>
     <!-- Login Strings -->
     <string name="login_title">Sign In</string>
     <string name="login_email">Email Address</string>
@@ -81,6 +81,7 @@
     <string name="navLogout">Logout</string>
     <string name="navAddProduct">Add Product</string>
     <string name="navtransaction">Transaction</string>
+    <string name="navEvents">Events</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

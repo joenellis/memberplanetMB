@@ -53,7 +53,7 @@
                 android:value="com.ellis.memberplanet.activity.ActivityHome" />
         </activity>
         <activity
-            android:name="com.ellis.memberplanet.activity.ActivityAddProduct"
+            android:name="com.ellis.memberplanet.activity.ActivityScan"
             android:parentActivityName="com.ellis.memberplanet.activity.ActivityHome">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

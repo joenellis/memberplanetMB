@@ -19,16 +19,21 @@
             android:layout_height="100dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription"
+            tools:background="@drawable/material_wallpaper"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
+            android:layout_toEndOf="@id/holderMyProduct_imgProductImage"
             android:layout_alignParentTop="true"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:layout_marginLeft="5dp"
+            android:padding="5dp"
+            android:layout_toRightOf="@id/holderMyProduct_imgProductImage"
+            android:layout_marginStart="5dp">
 
             <TextView
                 android:id="@+id/holderMyProduct_txtProductName"
@@ -36,14 +41,16 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:text="asdfghjkl;l,kmjhgfd"/>
 
             <TextView
                 android:id="@+id/holderMyProduct_txtProductPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                tools:text="asdfghjkl;l,kmjhgfd"/>
 
         </LinearLayout>
     </RelativeLayout>
