@@ -36,8 +36,16 @@ public interface ApiCall {
     @GET("getproductdetail.php")
     Call<Result> productdetails(@Query("productid") String productid);
 
-    @GET("deleteproduct.php")
-    Call<Result> productdelete(@Query("productid") String userid);
+    @GET("scan.php")
+    Call<Result> userScan(@Query("attendance") String attendance, @Query("email") String email);
+
+    @GET("mine.php")
+    Call<Result> userPay(@Query("name") String fullname, @Query("email") String email, @Query("number") String number,
+                         @Query("channel") String channel, @Query("amount") String amount, @Query("token") String token,
+                         @Query("clientreference") String clientreference);
+
+    @GET("transaction.php")
+    Call<Result> userTransaction(@Query("userid") String userid);
 
     @GET("getcategory.php")
     Call<Result> category();
@@ -49,48 +57,23 @@ public interface ApiCall {
                             @Field("email") String email,
                             @Field("contact") String contact);
 
+    @GET("authenticatecode.php")
+    Call<Result> authenticate( @Query("id") String yearGroupId,
+                               @Query("code") String mYearGroup);
+
     @FormUrlEncoded
-    @POST("usersignup.php")
-    Call<Result> userSignup();
-    @Multipart
-    @POST("uploadproduct.php")
-    Call<Result> uploadMulFile( @Part("userid") RequestBody id,
-                                @Part("categoryid") RequestBody categoryid,
-                                @Part("productname") RequestBody productname,
-                                @Part("price") RequestBody price,
-                                @Part("description") RequestBody description,
-                                @Part("location") RequestBody location,
-                                @Part MultipartBody.Part file1,
-                                @Part MultipartBody.Part file2,
-                                @Part MultipartBody.Part file3,
-                                @Part MultipartBody.Part file4);
-    @Multipart
-    @POST("uploadproduct.php")
-    Call<Result> uploadMulFile( @Part("userid") RequestBody id,
-                                @Part("categoryid") RequestBody categoryid,
-                                @Part("productname") RequestBody productname,
-                                @Part("price") RequestBody price,
-                                @Part("description") RequestBody description,
-                                @Part("location") RequestBody location,
-                                @Part MultipartBody.Part file1,
-                                @Part MultipartBody.Part file2,
-                                @Part MultipartBody.Part file3,
-                                @Part MultipartBody.Part file4,
-                                @Part MultipartBody.Part file5);
-    @Multipart
-    @POST("uploadproduct.php")
-    Call<Result> uploadMulFile( @Part("userid") RequestBody id,
-                                @Part("categoryid") RequestBody categoryid,
-                                @Part("productname") RequestBody productname,
-                                @Part("price") RequestBody price,
-                                @Part("description") RequestBody description,
-                                @Part("location") RequestBody location,
-                                @Part MultipartBody.Part file1,
-                                @Part MultipartBody.Part file2,
-                                @Part MultipartBody.Part file3,
-                                @Part MultipartBody.Part file4,
-                                @Part MultipartBody.Part file5,
-                                @Part MultipartBody.Part file6);
+    @POST("signup.php")
+    Call<Result> userSignup(@Field("firstname") String mFirstName,
+                            @Field("lastname") String mLastName,
+                            @Field("number") String mNumber,
+                            @Field("email") String mEmail,
+                            @Field("password") String mPassword,
+                            @Field("dob") String mDob,
+                            @Field("yeargroup") String mYearGroup,
+                            @Field("address") String mLocation,
+                            @Field("profession") String mProfession,
+                            @Field("organisation") String mOrganisation,
+                            @Field("empStatus") String mStatus);
 
     ///////////update
     @Multipart
@@ -104,45 +87,8 @@ public interface ApiCall {
                                 @Part MultipartBody.Part file1,
                                 @Part MultipartBody.Part file2,
                                 @Part MultipartBody.Part file3,
-                                @Part MultipartBody.Part file4,
-                                @Part MultipartBody.Part file5,
-                                @Part MultipartBody.Part file6);
-
-    @Multipart
-    @POST("userupdateproduct.php")
-    Call<Result> updateProduct( @Part("productid") RequestBody id,
-                                @Part("categoryid") RequestBody categoryid,
-                                @Part("productname") RequestBody productname,
-                                @Part("price") RequestBody price,
-                                @Part("description") RequestBody description,
-                                @Part("location") RequestBody location,
-                                @Part MultipartBody.Part file1,
-                                @Part MultipartBody.Part file2,
-                                @Part MultipartBody.Part file3,
                                 @Part MultipartBody.Part file4);
 
-    @Multipart
-    @POST("userupdateproduct.php")
-    Call<Result> updateProduct( @Part("productid") RequestBody id,
-                                @Part("categoryid") RequestBody categoryid,
-                                @Part("productname") RequestBody productname,
-                                @Part("price") RequestBody price,
-                                @Part("description") RequestBody description,
-                                @Part("location") RequestBody location,
-                                @Part MultipartBody.Part file1,
-                                @Part MultipartBody.Part file2,
-                                @Part MultipartBody.Part file3,
-                                @Part MultipartBody.Part file4,
-                                @Part MultipartBody.Part file5);
-
-    @Multipart
-    @POST("userupdateproduct.php")
-    Call<Result> updateProduct(@Part("productid") RequestBody id,
-                               @Part("categoryid") RequestBody categoryid,
-                               @Part("productname") RequestBody productname,
-                               @Part("price") RequestBody price,
-                               @Part("description") RequestBody description,
-                               @Part("location") RequestBody location);
 }
 
 

@@ -217,53 +217,53 @@ public class ActivityAddProduct extends AppCompatActivity implements GoogleApiCl
             MultipartBody.Part fileToUpload5 = MultipartBody.Part.createFormData("file5", videoFile.getName(), requestBody5);
             MultipartBody.Part fileToUpload6 = MultipartBody.Part.createFormData("file6", audioFile.getName(), requestBody6);
 
-            call = service.uploadMulFile(userid, categoryid, productname, price, description, location, fileToUpload1, fileToUpload2, fileToUpload3, fileToUpload4, fileToUpload5, fileToUpload6);
+            //call = service.uploadMulFile(userid, categoryid, productname, price, description, location, fileToUpload1, fileToUpload2, fileToUpload3, fileToUpload4, fileToUpload5, fileToUpload6);
 
         } else if (mVideoFilePath != null) {
 
             File videoFile = new File(mVideoFilePath);
             RequestBody requestBody5 = RequestBody.create(MediaType.parse("*/*"), videoFile);
             MultipartBody.Part fileToUpload5 = MultipartBody.Part.createFormData("file5", videoFile.getName(), requestBody5);
-            call = service.uploadMulFile(userid, categoryid, productname, price, description, location, fileToUpload1, fileToUpload2, fileToUpload3, fileToUpload4, fileToUpload5);
+           // call = service.uploadMulFile(userid, categoryid, productname, price, description, location, fileToUpload1, fileToUpload2, fileToUpload3, fileToUpload4, fileToUpload5);
 
         } else if (mAudioFilePath != null) {
 
             File audioFile = new File(mAudioFilePath);
             RequestBody requestBody6 = RequestBody.create(MediaType.parse("*/*"), audioFile);
             MultipartBody.Part fileToUpload6 = MultipartBody.Part.createFormData("file6", audioFile.getName(), requestBody6);
-            call = service.uploadMulFile(userid, categoryid, productname, price, description, location, fileToUpload1, fileToUpload2, fileToUpload3, fileToUpload4, fileToUpload6);
+            //call = service.uploadMulFile(userid, categoryid, productname, price, description, location, fileToUpload1, fileToUpload2, fileToUpload3, fileToUpload4, fileToUpload6);
 
         } else {
 
-            call = service.uploadMulFile(userid, categoryid, productname, price, description, location, fileToUpload1, fileToUpload2, fileToUpload3, fileToUpload4);
+            //call = service.uploadMulFile(userid, categoryid, productname, price, description, location, fileToUpload1, fileToUpload2, fileToUpload3, fileToUpload4);
 
         }
 
-        call.enqueue(new Callback<Result>() {
-
-            @Override
-            public void onResponse(Call<Result> call, Response<Result> response) {
-
-                progressDialog.dismiss();
-
-                if (response.body() != null) {
-                    if (!response.body().getError()) {
-
-                        Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(ActivityAddProduct.this, ActivityHome.class);
-                        startActivity(intent);
-                    }
-                }
-
-
-            }
-
-            @Override
-            public void onFailure(Call<Result> call, Throwable t) {
-                progressDialog.dismiss();
-            }
-
-        });
+//        call.enqueue(new Callback<Result>() {
+//
+//            @Override
+//            public void onResponse(Call<Result> call, Response<Result> response) {
+//
+//                progressDialog.dismiss();
+//
+//                if (response.body() != null) {
+//                    if (!response.body().getError()) {
+//
+//                        Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+//                        Intent intent = new Intent(ActivityAddProduct.this, ActivityHome.class);
+//                        startActivity(intent);
+//                    }
+//                }
+//
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Result> call, Throwable t) {
+//                progressDialog.dismiss();
+//            }
+//
+//        });
     }
 
 

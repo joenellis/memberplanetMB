@@ -4,7 +4,7 @@
             "outputFile": "/Users/joenellis/Desktop/memberplanetMB/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
             "map": [
                 {
-                    "source": "/Users/joenellis/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/8fc8520fd9941bb319153ee357f22ba1/res/values-land/values-land.xml",
+                    "source": "/Users/joenellis/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/0a639d72846c230d7ba9654afa1f3383/res/values-land/values-land.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/Users/joenellis/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/ceaccf1e28d11862be0fb4d241e688cd/res/values-land/values-land.xml",
+                    "source": "/Users/joenellis/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/a090e4b6fa3aa88362ac17dbe58283a8/res/values-land/values-land.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

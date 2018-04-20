@@ -58,14 +58,14 @@
         fab:menu_showShadow="true">
 
         <com.github.clans.fab.FloatingActionButton
-            android:src="@drawable/tigo"
+            android:src="@drawable/mtnnew"
             android:id="@+id/material_design_floating_action_menu_item1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             fab:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton
-            android:src="@drawable/mtnnew"
+            android:src="@drawable/tigo"
             android:id="@+id/material_design_floating_action_menu_item2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

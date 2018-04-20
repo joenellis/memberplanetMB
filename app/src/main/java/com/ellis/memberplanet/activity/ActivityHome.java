@@ -19,6 +19,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.ellis.memberplanet.R;
+import com.ellis.memberplanet.activity.activitypay.ActivityAirtelPay;
+import com.ellis.memberplanet.activity.activitypay.ActivityMtnPay;
+import com.ellis.memberplanet.activity.activitypay.ActivityTigoPay;
 import com.ellis.memberplanet.fragment.FragmentCategory;
 import com.ellis.memberplanet.fragment.FragmentEvent;
 import com.ellis.memberplanet.fragment.FragmentHome;
@@ -91,18 +94,18 @@ public class ActivityHome extends AppCompatActivity {
 
         floatingActionButton1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //startActivity(new Intent(getApplicationContext(), MtnPayActivity.class));
+                startActivity(new Intent(getApplicationContext(),ActivityMtnPay.class));
             }
         });
         floatingActionButton2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-               // startActivity(new Intent(getApplicationContext(), TigoPayActivity.class));
+                startActivity(new Intent(getApplicationContext(),ActivityTigoPay.class));
 
             }
         });
         floatingActionButton3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-               // startActivity(new Intent(getApplicationContext(), AirtelPayActivity.class));
+                startActivity(new Intent(getApplicationContext(), ActivityAirtelPay.class));
 
             }
         });
@@ -273,6 +276,7 @@ public class ActivityHome extends AppCompatActivity {
                 break;
 
             case R.id.nav_item_scan:
+
                 gotoActivity(new ActivityScan());
                 break;
 

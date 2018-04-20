@@ -13,7 +13,10 @@ public class SharedPrefManager {
     private static SharedPrefManager mInstance;
     private static Context mCtx;
 
-    private static final String SHARED_PREF_NAME = "FarmConnect";
+    private static final String SHARED_PREF_NAME = "Member Planet";
+    private static final String SHARED_USER_TOKEN = "apptoken";
+
+    private static final String KEY_USER_TOKEN = "keytoken";
 
     private static final String KEY_USER_ID = "keyuserid";
     private static final String KEY_USER_NAME = "keyusername";
@@ -75,4 +78,20 @@ public class SharedPrefManager {
         editor.apply();
         return true;
     }
+
+    //this method will save the device token to shared preferences
+    public boolean saveDeviceToken(String apptoken){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(SHARED_USER_TOKEN, apptoken);
+        editor.apply();
+        return true;
+    }
+
+    //this method will fetch the device token from shared preferences
+    public String getDeviceToken(){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(SHARED_USER_TOKEN, null);
+    }
+
 }

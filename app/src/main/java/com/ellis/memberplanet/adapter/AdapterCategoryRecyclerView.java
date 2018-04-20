@@ -53,7 +53,7 @@ public class AdapterCategoryRecyclerView extends RecyclerView.Adapter<AdapterCat
 
 
         holder.mCategory.setText(category[position]);
-        String browse = "Browse our "+ category[position].toLowerCase()+ " category.";
+        String browse = "Connect with recently joined alumni in "+ category[position].toLowerCase()+ " group ";
         holder.mSubtitle.setText(browse);
         holder.mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
         holder.mRecyclerView.setAdapter(new AdapterCategoryMembers(mContext, categories.get(position)));

@@ -31,6 +31,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -64,17 +66,21 @@ public class ActivitySignUp extends AppCompatActivity implements View.OnClickLis
     private String mProfession;
     private String mOrganisation;
     private String mStatus = null;
-    private String mCountry;
+    private String mYearGroup;
     private String mSecurityQuestion;
     private String mAnswer;
     private Button buttonSignUp;
     private RadioGroup radioGender;
     private DatePickerDialog datePickerDialog;
+    private String mID;
+
+
 
 
     private Spinner spinner;
-    private String URL="http://techiesatish.com/demo_api/spinner.php";
+    private String URL="http://28c67797.ngrok.io/memberplanet/APIs/getyeargroup.php";
     private  ArrayList<String> YearGroupName;
+    Map<Integer, String> Group = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,10 +94,22 @@ public class ActivitySignUp extends AppCompatActivity implements View.OnClickLis
         ////Spinner foryear groups
         YearGroupName=new ArrayList<>();
         loadSpinnerData(URL);
+
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                mCountry=spinner.getItemAtPosition(spinner.getSelectedItemPosition()).toString();
+                mYearGroup=spinner.getItemAtPosition(spinner.getSelectedItemPosition()).toString();
+
+                String s = spinner.getSelectedItem().toString();
+                for (Map.Entry<Integer, String> entry : Group.entrySet()) {
+                    Integer YearGroupId = entry.getKey();
+                    String value = entry.getValue();
+                    if (s.matches(value)){
+                        Toast.makeText(getApplicationContext(), ""+YearGroupId, Toast.LENGTH_SHORT).show();
+                        mID = String.valueOf(YearGroupId);
+                    }
+                }
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -101,21 +119,29 @@ public class ActivitySignUp extends AppCompatActivity implements View.OnClickLis
 
     }
     private void loadSpinnerData(String url) {
+
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
         StringRequest stringRequest=new StringRequest(Request.Method.GET, url, new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try{
                     JSONObject jsonObject=new JSONObject(response);
-                    if(jsonObject.getInt("success")==1){
-                        JSONArray jsonArray=jsonObject.getJSONArray("Name");
+
+                    if(jsonObject.getInt("error")==0){
+
+                        JSONArray jsonArray=jsonObject.getJSONArray("yeargroup");
+
                         for(int i=0;i<jsonArray.length();i++){
+
                             JSONObject jsonObject1=jsonArray.getJSONObject(i);
-                            String country=jsonObject1.getString("Country");
+                            String countryid=jsonObject1.getString("yeargroupid");
+                            String country=jsonObject1.getString("name");
+                            Group.put(Integer.valueOf(countryid), country);
                             YearGroupName.add(country);
+
                         }
                     }
-                    spinner.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, YearGroupName));
+                    spinner.setAdapter(new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, YearGroupName));
                 }catch (JSONException e){e.printStackTrace();}
             }
         }, new com.android.volley.Response.ErrorListener() {
@@ -133,7 +159,7 @@ public class ActivitySignUp extends AppCompatActivity implements View.OnClickLis
     public void SignUp() {
 
         if (allDataSet()) {
-          if(checkAccessCode()){
+          if(!checkAccessCode()){
                 createAccount();
           }
         }
@@ -214,7 +240,7 @@ public class ActivitySignUp extends AppCompatActivity implements View.OnClickLis
             Toast.makeText(this, "Please Select Employment Status", Toast.LENGTH_SHORT).show();
             return false;
 
-        } else if (TextUtils.isEmpty(mCountry)) {
+        } else if (TextUtils.isEmpty(mYearGroup)) {
         Toast.makeText(this, "Please Select Year Gruop", Toast.LENGTH_SHORT).show();
         return false;
 
@@ -258,14 +284,13 @@ public class ActivitySignUp extends AppCompatActivity implements View.OnClickLis
 
     private boolean checkAccessCode() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Authenticating Access Code...");
+            progressDialog.setMessage("Checking Access Code...");
         progressDialog.setCancelable(false);
         progressDialog.show();
 
         Api api = new Api();
         ApiCall service = api.getRetro().create(ApiCall.class);
-        Call<Result> call = service.userSignup();
-
+        Call<Result> call = service.authenticate(mID, mCode );
 
         call.enqueue(new Callback<Result>() {
 
@@ -275,18 +300,14 @@ public class ActivitySignUp extends AppCompatActivity implements View.OnClickLis
 
                 if (response.body() != null) {
 
-                    if (!response.body().getError()) {
-
+                    if (response.body().getError()) {
                         Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
 
-                        Intent intent = new Intent(getBaseContext(), ActivityLogin.class);
-                        startActivity(intent);
-                        finish();
-
+                    }else if (response.body().getError() == false){
+                        Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
+                        createAccount();
                     } else {
-
                         Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
-
                     }
                 }
             }
@@ -310,7 +331,7 @@ public class ActivitySignUp extends AppCompatActivity implements View.OnClickLis
 
         Api api = new Api();
         ApiCall service = api.getRetro().create(ApiCall.class);
-        Call<Result> call = service.userSignup();
+        Call<Result> call = service.userSignup(mFirstName, mLastName, mNumber, mEmail, mPassword, mDob, mID, mLocation, mProfession, mOrganisation, mStatus);
 
 
         call.enqueue(new Callback<Result>() {
@@ -337,6 +358,8 @@ public class ActivitySignUp extends AppCompatActivity implements View.OnClickLis
                 }
             }
 
+
+
             @Override
             public void onFailure(@NonNull Call<Result> call, @NonNull Throwable t) {
                 progressDialog.dismiss();
@@ -355,4 +378,6 @@ public class ActivitySignUp extends AppCompatActivity implements View.OnClickLis
                 break;
         }
     }
+
+
 }

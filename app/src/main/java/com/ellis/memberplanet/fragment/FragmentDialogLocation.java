@@ -39,10 +39,10 @@ public class FragmentDialogLocation extends DialogFragment {
         mDismissButton = rootView.findViewById(R.id.dismiss);
 
         //CREATE AND SET ADAPTER TO LISTVIEW
-        mAdapter = new ArrayAdapter<>(
-                getActivity(),
-                android.R.layout.simple_list_item_1,
-                getResources().getStringArray(R.array.cities));
+//        mAdapter = new ArrayAdapter<>(
+//                getActivity(),
+//                android.R.layout.simple_list_item_1,
+//                getResources().getStringArray(R.array.cities));
 
         mListView.setAdapter(mAdapter);
 

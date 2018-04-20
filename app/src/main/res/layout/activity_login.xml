@@ -9,13 +9,13 @@
     tools:context=".activity.ActivityLogin">
     <include layout="@layout/toolbar" />
 
-   <ImageView
-            android:id="@+id/appIcon"
-            android:paddingTop="80dp"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:src="@drawable/app_logo_white"
-            tools:ignore="ContentDescription" />
+   <!--<ImageView-->
+            <!--android:id="@+id/appIcon"-->
+            <!--android:paddingTop="80dp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="300dp"-->
+            <!--android:src="@drawable/app_logo_white"-->
+            <!--tools:ignore="ContentDescription" />-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,18 +54,21 @@
         </android.support.design.widget.TextInputLayout>
 
         <Button
-            android:id="@+id/login_btnLogin"
+            android:id="@+id/signUp_btnSignIn"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/button_style"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/activity_margin"
+            android:layout_marginStart="@dimen/activity_margin"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_background"
+            android:text="@string/signIn_signIn"
+            android:textColor="@color/textColorCustom"
             android:onClick="onLoginClick"
-            android:text="@string/login_btnLogin"
-            android:textColor="#fff"
-            android:textSize="14sp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/signUp_layLastName"
+            app:layout_constraintStart_toStartOf="@id/signUp_layFirstName"
+            app:layout_constraintTop_toBottomOf="@+id/signUp_layStatus" />
+
 
         <Button
             android:id="@+id/login_btnForgotPassword"

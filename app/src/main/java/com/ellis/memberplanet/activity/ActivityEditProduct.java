@@ -634,7 +634,7 @@ public class ActivityEditProduct extends AppCompatActivity implements GoogleApiC
             MultipartBody.Part fileToUpload5 = MultipartBody.Part.createFormData("file5", videoFile.getName(), requestBody5);
             MultipartBody.Part fileToUpload6 = MultipartBody.Part.createFormData("file6", audioFile.getName(), requestBody6);
 
-            call = service.updateProduct(product_id, category_id, productname, price, description, location, fileToUpload1, fileToUpload2, fileToUpload3, fileToUpload4, fileToUpload5, fileToUpload6);
+            //call = service.updateProduct(product_id, category_id, productname, price, description, location, fileToUpload1, fileToUpload2, fileToUpload3, fileToUpload4, fileToUpload5, fileToUpload6);
 
         } else if (productImage != null && productImage1 != null && productImage2 != null && productImage3 != null && video != null) {
 //Map is used to multipart the file using okhttp3.RequestBody
@@ -659,7 +659,7 @@ public class ActivityEditProduct extends AppCompatActivity implements GoogleApiC
             File videoFile = new File(video);
             RequestBody requestBody5 = RequestBody.create(MediaType.parse("*/*"), videoFile);
             MultipartBody.Part fileToUpload5 = MultipartBody.Part.createFormData("file5", videoFile.getName(), requestBody5);
-            call = service.updateProduct(product_id, category_id, productname, price, description, location, fileToUpload1, fileToUpload2, fileToUpload3, fileToUpload4, fileToUpload5);
+            //call = service.updateProduct(product_id, category_id, productname, price, description, location, fileToUpload1, fileToUpload2, fileToUpload3, fileToUpload4, fileToUpload5);
 
         } else if (productImage != null && productImage1 != null && productImage2 != null && productImage3 != null && audio != null) {
             //Map is used to multipart the file using okhttp3.RequestBody
@@ -684,7 +684,7 @@ public class ActivityEditProduct extends AppCompatActivity implements GoogleApiC
             File audioFile = new File(audio);
             RequestBody requestBody6 = RequestBody.create(MediaType.parse("*/*"), audioFile);
             MultipartBody.Part fileToUpload6 = MultipartBody.Part.createFormData("file6", audioFile.getName(), requestBody6);
-            call = service.updateProduct(product_id, category_id, productname, price, description, location, fileToUpload1, fileToUpload2, fileToUpload3, fileToUpload4, fileToUpload6);
+            //call = service.updateProduct(product_id, category_id, productname, price, description, location, fileToUpload1, fileToUpload2, fileToUpload3, fileToUpload4, fileToUpload6);
 
         }  else if (productImage != null && productImage1 != null && productImage2 != null && productImage3 != null) {
 
@@ -712,32 +712,32 @@ public class ActivityEditProduct extends AppCompatActivity implements GoogleApiC
 
         }else {
 
-            call = service.updateProduct(product_id, category_id, productname, price, description, location);
+           // call = service.updateProduct(product_id, category_id, productname, price, description, location);
 
         }
-        call.enqueue(new Callback<Result>() {
-            @Override
-            public void onResponse(Call<Result> call, Response<Result> response) {
-                progressDialog.dismiss();
-                if (response.body() != null) {
-                    if (!response.body().getError()) {
-                        progressDialog.dismiss();
-                        Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
-
-                    } else {
-                        Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
-                        progressDialog.dismiss();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Result> call, Throwable t) {
-                progressDialog.dismiss();
-                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
-                progressDialog.dismiss();
-            }
-        });
+//        call.enqueue(new Callback<Result>() {
+//            @Override
+//            public void onResponse(Call<Result> call, Response<Result> response) {
+//                progressDialog.dismiss();
+//                if (response.body() != null) {
+//                    if (!response.body().getError()) {
+//                        progressDialog.dismiss();
+//                        Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
+//
+//                    } else {
+//                        Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
+//                        progressDialog.dismiss();
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Result> call, Throwable t) {
+//                progressDialog.dismiss();
+//                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+//                progressDialog.dismiss();
+//            }
+//        });
     }
 
 
