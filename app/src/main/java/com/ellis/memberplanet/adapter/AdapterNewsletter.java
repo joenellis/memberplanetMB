@@ -29,7 +29,7 @@ public class AdapterNewsletter extends RecyclerView.Adapter<AdapterNewsletter.Pr
     @Override
     public ProductHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        View view = inflater.inflate(R.layout.holder_product_item, null);
+        View view = inflater.inflate(R.layout.holder_newsletter, null);
         return new ProductHolder(view);
     }
 

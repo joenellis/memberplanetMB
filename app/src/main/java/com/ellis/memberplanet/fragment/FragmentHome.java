@@ -10,11 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.ellis.memberplanet.adapter.AdapterNewsletter;
 import com.ellis.memberplanet.api.Api;
 import com.ellis.memberplanet.api.ApiCall;
 import com.ellis.memberplanet.api.Result;
 import com.ellis.memberplanet.R;
 import com.ellis.memberplanet.adapter.AdapterProduct;
+import com.ellis.memberplanet.object.ObjectNewsletter;
 import com.ellis.memberplanet.object.ObjectProduct;
 
 import java.util.ArrayList;
@@ -32,8 +34,8 @@ public class FragmentHome extends Fragment {
     RecyclerView recyclerViewHome;
 
     int spanCount;
-    private AdapterProduct adapter;
-    private ArrayList<ObjectProduct> products;
+    private AdapterNewsletter adapter;
+    private ArrayList<ObjectNewsletter> products;
 
     public FragmentHome() {
     }
@@ -56,7 +58,7 @@ public class FragmentHome extends Fragment {
 
         Api api = new Api();
         ApiCall service = api.getRetro().create(ApiCall.class);
-        Call<Result> call = service.products(KEY);
+        Call<Result> call = service.products();
 
         call.enqueue(new Callback<Result>() {
             @Override
@@ -65,8 +67,8 @@ public class FragmentHome extends Fragment {
                 if (response.body() != null) {
                     if (!response.body().getError()) {
 //                      Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_LONG).show();
-                        products = response.body().getObjectProducts();
-                        adapter = new AdapterProduct(getContext(), products);
+                        products = response.body().getObjectNewsletters();
+                        adapter = new AdapterNewsletter(getContext(), products);
                         recyclerViewHome.setAdapter(adapter);
 
                     } else {

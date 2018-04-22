@@ -24,6 +24,9 @@ public interface ApiCall {
     @GET("getallproducts.php")
     Call<Result> products(@Query("key") String key) ;
 
+    @GET("getnewsletter.php")
+    Call<Result> products();
+
     @GET("getproducts.php")
     Call<Result> mproducts(@Query("userid") String userid);
 

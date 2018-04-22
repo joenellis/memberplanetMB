@@ -55,6 +55,15 @@ public class ObjectProduct {
     public ObjectProduct() {
     }
 
+//
+//    public ObjectProduct(String title, String image, String description, String photo, String publishdate) {
+//        this.title = title;
+//        this.image = image;
+//        this.description = description;
+//        this.photo = photo;
+//        this.publishdate = publishdate;
+//    }
+//
     public ObjectProduct(String product_id, String name, String price, String location, String image) {
 
         this.product_id = product_id;

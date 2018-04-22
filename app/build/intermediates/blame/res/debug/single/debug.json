@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/Users/joenellis/Desktop/memberplanetMB/app/build/intermediates/res/merged/debug/layout_abc_popup_menu_header_item_layout.xml.flat",
-        "source": "/Users/joenellis/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/a090e4b6fa3aa88362ac17dbe58283a8/res/layout/abc_popup_menu_header_item_layout.xml"
-    },
-    {
         "merged": "/Users/joenellis/Desktop/memberplanetMB/app/build/intermediates/res/merged/debug/layout_design_menu_item_action_area.xml.flat",
         "source": "/Users/joenellis/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/0a639d72846c230d7ba9654afa1f3383/res/layout/design_menu_item_action_area.xml"
+    },
+    {
+        "merged": "/Users/joenellis/Desktop/memberplanetMB/app/build/intermediates/res/merged/debug/layout_abc_popup_menu_header_item_layout.xml.flat",
+        "source": "/Users/joenellis/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/a090e4b6fa3aa88362ac17dbe58283a8/res/layout/abc_popup_menu_header_item_layout.xml"
     },
     {
         "merged": "/Users/joenellis/Desktop/memberplanetMB/app/build/intermediates/res/merged/debug/drawable_abc_ic_go_search_api_material.xml.flat",
@@ -48,12 +48,12 @@
         "source": "/Users/joenellis/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/a090e4b6fa3aa88362ac17dbe58283a8/res/layout/abc_list_menu_item_radio.xml"
     },
     {
-        "merged": "/Users/joenellis/Desktop/memberplanetMB/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_design_ic_visibility.xml.flat",
-        "source": "/Users/joenellis/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/0a639d72846c230d7ba9654afa1f3383/res/drawable-anydpi-v21/design_ic_visibility.xml"
-    },
-    {
         "merged": "/Users/joenellis/Desktop/memberplanetMB/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_ic_star_half_black_48dp.png.flat",
         "source": "/Users/joenellis/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/a090e4b6fa3aa88362ac17dbe58283a8/res/drawable-xhdpi-v4/abc_ic_star_half_black_48dp.png"
+    },
+    {
+        "merged": "/Users/joenellis/Desktop/memberplanetMB/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_design_ic_visibility.xml.flat",
+        "source": "/Users/joenellis/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/0a639d72846c230d7ba9654afa1f3383/res/drawable-anydpi-v21/design_ic_visibility.xml"
     },
     {
         "merged": "/Users/joenellis/Desktop/memberplanetMB/app/build/intermediates/res/merged/debug/color_abc_secondary_text_material_dark.xml.flat",
@@ -102,6 +102,10 @@
     {
         "merged": "/Users/joenellis/Desktop/memberplanetMB/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_star_half_black_16dp.png.flat",
         "source": "/Users/joenellis/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/a090e4b6fa3aa88362ac17dbe58283a8/res/drawable-xxhdpi-v4/abc_ic_star_half_black_16dp.png"
+    },
+    {
+        "merged": "/Users/joenellis/Desktop/memberplanetMB/app/build/intermediates/res/merged/debug/layout_holder_newsletter.xml.flat",
+        "source": "/Users/joenellis/Desktop/memberplanetMB/app/src/main/res/layout/holder_newsletter.xml"
     },
     {
         "merged": "/Users/joenellis/Desktop/memberplanetMB/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_notification_bg_low_normal.9.png.flat",
@@ -380,12 +384,12 @@
         "source": "/Users/joenellis/.gradle/caches/transforms-1/files-1.1/play-services-base-15.0.0.aar/7f3993c4f8ff9c2e62e772930b6c7b46/res/drawable-hdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
     },
     {
-        "merged": "/Users/joenellis/Desktop/memberplanetMB/app/build/intermediates/res/merged/debug/layout_holder_product_item.xml.flat",
-        "source": "/Users/joenellis/Desktop/memberplanetMB/app/src/main/res/layout/holder_product_item.xml"
-    },
-    {
         "merged": "/Users/joenellis/Desktop/memberplanetMB/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_menu_selectall_mtrl_alpha.png.flat",
         "source": "/Users/joenellis/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/a090e4b6fa3aa88362ac17dbe58283a8/res/drawable-hdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png"
+    },
+    {
+        "merged": "/Users/joenellis/Desktop/memberplanetMB/app/build/intermediates/res/merged/debug/layout_holder_product_item.xml.flat",
+        "source": "/Users/joenellis/Desktop/memberplanetMB/app/src/main/res/layout/holder_product_item.xml"
     },
     {
         "merged": "/Users/joenellis/Desktop/memberplanetMB/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_price_tag.png.flat",

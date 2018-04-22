@@ -26,8 +26,6 @@ public class Result {
     @SerializedName("products")
     private ArrayList<ObjectProduct> objectProducts;
 
-
-
     @SerializedName("newsletters")
     private ArrayList<ObjectNewsletter> objectNewsletters;
 
@@ -118,6 +116,7 @@ public class Result {
     public ArrayList<Trans> getTrans() {
         return trans;
     }
+
     public ArrayList<ObjectNewsletter> getObjectNewsletters() {
         return objectNewsletters;
     }

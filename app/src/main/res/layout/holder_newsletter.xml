@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/holderNewsFeeds_rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp">
+
+        <ImageView
+            android:id="@+id/holderNewsFeeds_adminimg"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            tools:background="@drawable/material_wallpaper"
+            tools:ignore="ContentDescription" />
+
+        <LinearLayout
+            android:id="@+id/holderNewsFeed_laySummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@id/holderNewsFeeds_adminimg"
+            android:layout_toRightOf="@id/holderNewsFeeds_adminimg"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/holderNewsFeeds_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:textSize="15sp"
+                tools:text="sfdhbckskdjc" />
+
+            <TextView
+                android:id="@+id/holderNewsFeeds_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:textSize="12sp"
+                tools:text="sfdhbckskdjc" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/holderNewsFeed_laySummary"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/holderNewsFeeds_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:text="dhbcsdkjacnsd" />
+
+            <TextView
+                android:id="@+id/holderNewsFeeds_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:layout_marginBottom="10dp"
+                tools:text="ghhc" />
+
+            <ImageView
+                android:id="@+id/holderNewsFeeds_newsfeedimg"
+                android:layout_width="353dp"
+                android:layout_height="200dp"
+                tools:background="@drawable/material_wallpaper"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

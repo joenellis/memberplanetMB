@@ -1,7 +1,6 @@
 package com.ellis.memberplanet.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,6 @@ import android.widget.TextView;
 
 import com.ellis.memberplanet.object.ObjectProduct;
 import com.ellis.memberplanet.R;
-import com.ellis.memberplanet.activity.ActivityViewProduct;
 import com.bumptech.glide.Glide;
 //import com.squareup.picasso.Picasso;
 
@@ -31,7 +29,7 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ProductH
     @Override
     public ProductHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        View view = inflater.inflate(R.layout.holder_product_item, null);
+        View view = inflater.inflate(R.layout.holder_newsletter, null);
         return new ProductHolder(view);
     }
 
@@ -40,22 +38,23 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ProductH
 
         final ObjectProduct product = products.get(position);
 
-        String price = "GhC " + product.getPrice();
-
         holder.productName.setText(product.getProductname());
-        holder.productPrice.setText(price);
+        holder.productPrice.setText(product.getFullname());
+//        holder.productName.setText(product.getTitle());
+//        holder.productName.setText(product.getPublishdate());
+//        Glide.with(this.mContext).load(product.getPhoto()).into(holder.productImage);
         Glide.with(this.mContext).load(product.getImage()).into(holder.productImage);
 
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(mContext, ActivityViewProduct.class);
-                intent.putExtra("ID", product.getProduct_id());
-                mContext.startActivity(intent);
-            }
-        });
+//
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                Intent intent = new Intent(mContext, ActivityViewProduct.class);
+//                intent.putExtra("ID", product.getProduct_id());
+//                mContext.startActivity(intent);
+//            }
+//        });
 
     }
 
@@ -144,7 +143,15 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ProductH
 
             productName = itemView.findViewById(R.id.holderMyProduct_txtProductName);
             productPrice = itemView.findViewById(R.id.holderMyProduct_txtDescription);
-            productImage = itemView.findViewById(R.id.holderNewsFeeds_img);
+           // productImage = itemView.findViewById(R.id.holderNewsFeeds_img);
+
+
+//            Adminname = itemView.findViewById(R.id.holder_admin_name);
+//            despcriptor = itemView.findViewById(R.id.holder_description);
+//            newsfeedImage = itemView.findViewById(R.id.holdernewsfeeds_img);
+//            title = itemView.findViewById(R.id.holder_title);
+//            adminImage = itemView.findViewById(R.id.holder_admin_img);
+//            date = itemView.findViewById(R.id.holder_publishdate);
         }
     }
 }
