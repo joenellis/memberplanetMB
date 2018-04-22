@@ -142,16 +142,10 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ProductH
             super(itemView);
 
             productName = itemView.findViewById(R.id.holderMyProduct_txtProductName);
-            productPrice = itemView.findViewById(R.id.holderMyProduct_txtDescription);
+            //productPrice = itemView.findViewById(R.id.holderMyProduct_txtDescription);
            // productImage = itemView.findViewById(R.id.holderNewsFeeds_img);
 
 
-//            Adminname = itemView.findViewById(R.id.holder_admin_name);
-//            despcriptor = itemView.findViewById(R.id.holder_description);
-//            newsfeedImage = itemView.findViewById(R.id.holdernewsfeeds_img);
-//            title = itemView.findViewById(R.id.holder_title);
-//            adminImage = itemView.findViewById(R.id.holder_admin_img);
-//            date = itemView.findViewById(R.id.holder_publishdate);
         }
     }
 }

@@ -64,7 +64,7 @@ public class ActivityMyProduct extends AppCompatActivity {
         initializeComponents();
 
         mToolbar = findViewById(R.id.toolbar);
-        mToolbar.setTitle("Member");
+        mToolbar.setTitle("Year Members");
         setSupportActionBar(mToolbar);
 
         assert getSupportActionBar() != null;

@@ -51,7 +51,7 @@
 
     <!-- Home Fragment Strings -->
     <string name="homeNewHeading">New</string>
-    <string name="homeBrowseNew">Browse our newest products</string>
+    <string name="homeBrowseNew">Browse our newest events</string>
     <string name="homeFruitHeading">Fruits</string>
     <string name="homeBrowseFruit">Browse our fruit category</string>
     <string name="homeVegetableHeading">Vegetables</string>

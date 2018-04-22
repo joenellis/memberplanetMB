@@ -16,6 +16,7 @@ import com.ellis.memberplanet.adapter.AdapterProduct;
 import com.ellis.memberplanet.api.Api;
 import com.ellis.memberplanet.api.ApiCall;
 import com.ellis.memberplanet.api.Result;
+import com.ellis.memberplanet.object.ObjectEvent;
 import com.ellis.memberplanet.object.ObjectProduct;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class FragmentEvent extends Fragment {
     RecyclerView recyclerViewEvents;
 
     private AdapterEvent adapter;
-    private ArrayList<ObjectProduct> products;
+    private ArrayList<ObjectEvent> events;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,7 +55,7 @@ public class FragmentEvent extends Fragment {
 
         Api api = new Api();
         ApiCall service = api.getRetro().create(ApiCall.class);
-        Call<Result> call = service.products(KEY);
+        Call<Result> call = service.event();
 
         call.enqueue(new Callback<Result>() {
             @Override
@@ -63,8 +64,8 @@ public class FragmentEvent extends Fragment {
                 if (response.body() != null) {
                     if (!response.body().getError()) {
 //                      Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_LONG).show();
-                        products = response.body().getObjectProducts();
-                        adapter = new AdapterEvent(getContext(), products);
+                        events = response.body().getObjectEvents();
+                        adapter = new AdapterEvent(getContext(), events);
                         recyclerViewEvents.setAdapter(adapter);
 
                     } else {

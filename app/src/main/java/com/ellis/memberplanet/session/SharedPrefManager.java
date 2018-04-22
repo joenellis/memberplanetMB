@@ -19,10 +19,12 @@ public class SharedPrefManager {
     private static final String KEY_USER_TOKEN = "keytoken";
 
     private static final String KEY_USER_ID = "keyuserid";
+    private static final String KEY_GROUP_ID = "keygroupid";
     private static final String KEY_USER_NAME = "keyusername";
     private static final String KEY_USER_EMAIL = "keyuseremail";
     private static final String KEY_USER_PASSWORD = "keyuserpassword";
     private static final String KEY_USER_CONTACT = "keyusercontact";
+    private static final String KEY_USER_IMAGE = "keyuserimage";
 
     private SharedPrefManager(Context context) {
         mCtx = context;
@@ -41,10 +43,12 @@ public class SharedPrefManager {
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         editor.putString(KEY_USER_ID, objectUser.getUser_id());
+        editor.putString(KEY_GROUP_ID, objectUser.getYeargroupid());
         editor.putString(KEY_USER_NAME, objectUser.getFullname());
         editor.putString(KEY_USER_EMAIL, objectUser.getEmail());
         editor.putString(KEY_USER_PASSWORD, objectUser.getPassword());
         editor.putString(KEY_USER_CONTACT, objectUser.getContact());
+        editor.putString(KEY_USER_IMAGE, objectUser.getImage());
         editor.apply();
         return true;
     }
@@ -53,10 +57,12 @@ public class SharedPrefManager {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return new ObjectUser(
                 sharedPreferences.getString(KEY_USER_ID, null),
+                sharedPreferences.getString(KEY_GROUP_ID, null),
                 sharedPreferences.getString(KEY_USER_NAME, null),
                 sharedPreferences.getString(KEY_USER_EMAIL, null),
                 sharedPreferences.getString(KEY_USER_PASSWORD, null),
-                sharedPreferences.getString(KEY_USER_CONTACT, null)
+                sharedPreferences.getString(KEY_USER_CONTACT, null),
+                sharedPreferences.getString(KEY_USER_IMAGE, null)
 
         );
     }

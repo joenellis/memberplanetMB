@@ -233,7 +233,7 @@ public class ActivitySignUp extends AppCompatActivity implements View.OnClickLis
 
         } else if (TextUtils.isEmpty(mCode)) {
 
-            code.setError("Enter Year Group Access Code");
+            code.setError("Enter Year EventGroup Access Code");
             return false;
 
         } else if (TextUtils.isEmpty(mStatus)) {

@@ -16,8 +16,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.ellis.memberplanet.R;
 import com.ellis.memberplanet.activity.activitypay.ActivityAirtelPay;
 import com.ellis.memberplanet.activity.activitypay.ActivityMtnPay;
@@ -42,6 +44,7 @@ public class ActivityHome extends AppCompatActivity {
     Toolbar mToolbar;
     TextView fullName;
     TextView farmName;
+    ImageView profilepic;
     FloatingActionButton fab;
     DrawerLayout mDrawerLayout;
     CircleImageView userPicture;
@@ -115,8 +118,9 @@ public class ActivityHome extends AppCompatActivity {
 
             }
         });
-        //String imageurl = SharedPrefManager.getInstance(getApplicationContext()).getobjectUser().getImage;
-        //Glide.with(getApplicationContext()).load(imageurl).into(profilepic);
+
+        String imageurl =SharedPrefManager.getInstance(getApplicationContext()).getobjectUser().getImage();
+        Glide.with(getApplicationContext()).load(imageurl).into(profilepic);
         /////////////////
 
         String fullName = SharedPrefManager.getInstance(getApplicationContext()).getobjectUser().getFullname();
@@ -318,6 +322,7 @@ public class ActivityHome extends AppCompatActivity {
 
         mNavMenu = mNavigationView.getMenu();
         navHeader = mNavigationView.getHeaderView(0);
+        profilepic = navHeader.findViewById(R.id.navDrawerHeader_UserImage);
         fullName = navHeader.findViewById(R.id.navDrawerHeader_UserFullName);
         farmName = navHeader.findViewById(R.id.navDrawerHeader_UserFarmName);
 

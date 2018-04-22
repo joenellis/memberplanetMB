@@ -33,7 +33,7 @@ public class FragmentHome extends Fragment {
     RecyclerView.LayoutManager layoutManager;
     RecyclerView recyclerViewHome;
 
-    int spanCount;
+
     private AdapterNewsletter adapter;
     private ArrayList<ObjectNewsletter> products;
 
@@ -58,7 +58,7 @@ public class FragmentHome extends Fragment {
 
         Api api = new Api();
         ApiCall service = api.getRetro().create(ApiCall.class);
-        Call<Result> call = service.products();
+        Call<Result> call = service.newsletter();
 
         call.enqueue(new Callback<Result>() {
             @Override

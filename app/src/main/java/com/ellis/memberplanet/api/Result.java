@@ -1,5 +1,6 @@
 package com.ellis.memberplanet.api;
 
+import com.ellis.memberplanet.object.ObjectEvent;
 import com.ellis.memberplanet.object.ObjectNewsletter;
 import com.ellis.memberplanet.object.ObjectProduct;
 import com.ellis.memberplanet.object.ObjectUser;
@@ -23,11 +24,14 @@ public class Result {
     @SerializedName("product")
     private  ObjectProduct objectProductdetail;
 
-    @SerializedName("products")
-    private ArrayList<ObjectProduct> objectProducts;
-
     @SerializedName("newsletters")
     private ArrayList<ObjectNewsletter> objectNewsletters;
+
+    @SerializedName("events")
+    private ArrayList<ObjectEvent> objectEvents;
+
+    @SerializedName("products")
+    private ArrayList<ObjectProduct> objectProducts;
 
     @SerializedName("tubers")
     private ArrayList<ObjectProduct> objectProductTubers;
@@ -119,5 +123,9 @@ public class Result {
 
     public ArrayList<ObjectNewsletter> getObjectNewsletters() {
         return objectNewsletters;
+    }
+
+    public ArrayList<ObjectEvent> getObjectEvents() {
+        return objectEvents;
     }
 }

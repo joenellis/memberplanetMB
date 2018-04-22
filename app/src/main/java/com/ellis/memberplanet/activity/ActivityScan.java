@@ -1,6 +1,5 @@
 package com.ellis.memberplanet.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
@@ -27,10 +26,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-
-import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
 
 /**
  * Created by joenellis on 18/04/2018.
@@ -38,11 +38,17 @@ import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
 
 public class ActivityScan extends AppCompatActivity{
     private TextInputEditText email;
-    private String mCountry;
+
     private Toolbar mToolbar;
+
+    private String mID;
+    private String mEvent;
     private Spinner spinner;
-    private String URL="http://techiesatish.com/demo_api/spinner.php";
-    private  ArrayList<String> YearGroupName;
+    private String URL="http://28c67797.ngrok.io/memberplanet/APIs/geteventspinner.php";
+    private  ArrayList<String> EventName;
+    Map<Integer, String> event = new HashMap<>();
+
+
     private Button buttonScan;
     final private String qr_code = "http://60913140.ngrok.io/APIs/";
     private  IntentIntegrator integrator;
@@ -52,7 +58,7 @@ public class ActivityScan extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan);
 
-        spinner=findViewById(R.id.country_Name);
+        spinner=findViewById(R.id.event_name);
         mToolbar = findViewById(R.id.toolbar);
         mToolbar.setTitle("Scan");
         setSupportActionBar(mToolbar);
@@ -62,6 +68,10 @@ public class ActivityScan extends AppCompatActivity{
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
+
+        ////Spinner foryear groups
+        EventName =new ArrayList<>();
+        loadSpinnerData(URL);
 
         buttonScan = findViewById(R.id.buttonScan);
 
@@ -88,20 +98,67 @@ public class ActivityScan extends AppCompatActivity{
 
         });
 
-        //Spinner foryear groups
-        YearGroupName=new ArrayList<>();
         loadSpinnerData(URL);
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                mCountry=spinner.getItemAtPosition(spinner.getSelectedItemPosition()).toString();
+                mEvent =spinner.getItemAtPosition(spinner.getSelectedItemPosition()).toString();
+
+                String s = spinner.getSelectedItem().toString();
+                for (Map.Entry<Integer, String> entry : event.entrySet()) {
+                    Integer Eventid = entry.getKey();
+                    String value = entry.getValue();
+                    if (s.matches(value)){
+                        Toast.makeText(getApplicationContext(), ""+Eventid, Toast.LENGTH_SHORT).show();
+                        mID = String.valueOf(Eventid);
+                    }
+                }
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
+                String mCountrynull = null;
             }
         });
-    }
 
+    }
+    private void loadSpinnerData(String url) {
+
+        RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
+        StringRequest stringRequest=new StringRequest(Request.Method.GET, url, new com.android.volley.Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try{
+                    JSONObject jsonObject=new JSONObject(response);
+
+                    if(jsonObject.getInt("error")==0){
+
+                        JSONArray jsonArray=jsonObject.getJSONArray("events");
+
+                        for(int i=0;i<jsonArray.length();i++){
+
+                            JSONObject jsonObject1=jsonArray.getJSONObject(i);
+                            String eventid=jsonObject1.getString("eventid");
+                            String eventname=jsonObject1.getString("name");
+                            event.put(Integer.valueOf(eventid), eventname);
+                            EventName.add(eventname);
+
+                        }
+                    }
+                    spinner.setAdapter(new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, EventName));
+                }catch (JSONException e){e.printStackTrace();}
+            }
+        }, new com.android.volley.Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        int socketTimeout = 30000;
+        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(policy);
+        requestQueue.add(stringRequest);
+    }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult resultcode = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
@@ -124,36 +181,6 @@ public class ActivityScan extends AppCompatActivity{
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
-    }
-
-    private void loadSpinnerData(String url) {
-        RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
-        StringRequest stringRequest=new StringRequest(Request.Method.GET, url, new com.android.volley.Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try{
-                    JSONObject jsonObject=new JSONObject(response);
-                    if(jsonObject.getInt("success")==1){
-                        JSONArray jsonArray=jsonObject.getJSONArray("Name");
-                        for(int i=0;i<jsonArray.length();i++){
-                            JSONObject jsonObject1=jsonArray.getJSONObject(i);
-                            String country=jsonObject1.getString("Country");
-                            YearGroupName.add(country);
-                        }
-                    }
-                    spinner.setAdapter(new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, YearGroupName));
-                }catch (JSONException e){e.printStackTrace();}
-            }
-        }, new com.android.volley.Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        });
-        int socketTimeout = 30000;
-        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-        stringRequest.setRetryPolicy(policy);
-        requestQueue.add(stringRequest);
     }
 
 }
