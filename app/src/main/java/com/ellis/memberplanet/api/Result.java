@@ -1,5 +1,6 @@
 package com.ellis.memberplanet.api;
 
+import com.ellis.memberplanet.object.ObjectNewsletter;
 import com.ellis.memberplanet.object.ObjectProduct;
 import com.ellis.memberplanet.object.ObjectUser;
 import com.ellis.memberplanet.object.Trans;
@@ -24,6 +25,11 @@ public class Result {
 
     @SerializedName("products")
     private ArrayList<ObjectProduct> objectProducts;
+
+
+
+    @SerializedName("newsletters")
+    private ArrayList<ObjectNewsletter> objectNewsletters;
 
     @SerializedName("tubers")
     private ArrayList<ObjectProduct> objectProductTubers;
@@ -112,5 +118,7 @@ public class Result {
     public ArrayList<Trans> getTrans() {
         return trans;
     }
-
+    public ArrayList<ObjectNewsletter> getObjectNewsletters() {
+        return objectNewsletters;
+    }
 }
