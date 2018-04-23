@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -30,6 +31,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import retrofit2.Call;
@@ -47,11 +50,16 @@ public class ActivityAirtelPay extends AppCompatActivity implements View.OnClick
     private Button buttonpay;
     private String code = "airtel-gh";
     private Toolbar mToolbar;
-    private String amount, number, fullname, email,apptoken,ClientReference;
+    private String amount, number, fullname, email,apptoken,ClientReference, yeargroupid, userid;
+
+    private String mID;
+    //private String mEvent;
+    private String mYearGroup;
+
+    final private String URL="http://28c67797.ngrok.io/memberplanet/APIs/getaccountspinner.php";
     private Spinner spinner;
-    private String URL="http://techiesatish.com/demo_api/spinner.php";
-    private ArrayList<String> YearGroupName;
-    private String mCountry;
+    private  ArrayList<String> YearGroupName;
+    Map<Integer, String> Group = new HashMap<>();
 
 
     @Override
@@ -60,7 +68,7 @@ public class ActivityAirtelPay extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_pay_airtel);
 
         mToolbar = findViewById(R.id.toolbar);
-        mToolbar.setTitle("Scan");
+        mToolbar.setTitle("Payment Method");
         setSupportActionBar(mToolbar);
         assert getSupportActionBar() != null;
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -75,84 +83,101 @@ public class ActivityAirtelPay extends AppCompatActivity implements View.OnClick
 
         buttonpay.setOnClickListener(this);
 
-        //Spinner foryear groups
+        ////Spinner foryear groups
         YearGroupName=new ArrayList<>();
         loadSpinnerData(URL);
+
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                mCountry=spinner.getItemAtPosition(spinner.getSelectedItemPosition()).toString();
+                mYearGroup=spinner.getItemAtPosition(spinner.getSelectedItemPosition()).toString();
+
+                String s = spinner.getSelectedItem().toString();
+                for (Map.Entry<Integer, String> entry : Group.entrySet()) {
+                    Integer YearGroupId = entry.getKey();
+                    String value = entry.getValue();
+                    if (s.matches(value)){
+                        Toast.makeText(getApplicationContext(), ""+YearGroupId, Toast.LENGTH_SHORT).show();
+                        mID = String.valueOf(YearGroupId);
+                    }
+                }
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
+                String mCountrynull = null;
             }
         });
+
     }
 
 
     private void userPay() {
 
-        amount = editTextAmount.getText().toString();
-        number = editTextNumber.getText().toString();
+        if(allDataSet()) {
 
-        if((amount) == null){
-            Toast.makeText(this, "Please enter Amount", Toast.LENGTH_LONG).show();
-            return;
-        }else if ( (number) == null){
-            Toast.makeText(this, "Please enter Number", Toast.LENGTH_LONG).show();
-            return;
-        }
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage("Requesting...");
+            progressDialog.setCancelable(false);
+            progressDialog.show();
 
-        final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Requesting...");
-        progressDialog.setCancelable(false);
-        progressDialog.show();
+            apptoken = SharedPrefManager.getInstance(this).getDeviceToken();
+            fullname = SharedPrefManager.getInstance(getApplicationContext()).getobjectUser().getFullname();
+            email = SharedPrefManager.getInstance(getApplicationContext()).getobjectUser().getEmail();
+            yeargroupid = SharedPrefManager.getInstance(getApplicationContext()).getobjectUser().getYeargroupid();
+            userid = SharedPrefManager.getInstance(getApplicationContext()).getobjectUser().getUser_id();
 
-        apptoken = SharedPrefManager.getInstance(this).getDeviceToken();
-        fullname = SharedPrefManager.getInstance(getApplicationContext()).getobjectUser().getFullname();
-        email = SharedPrefManager.getInstance(getApplicationContext()).getobjectUser().getEmail();
-        ClientReference = UUID.randomUUID().toString();
+            ClientReference = UUID.randomUUID().toString();
 
-        Api api = new Api();
-        ApiCall service = api.getRetro().create(ApiCall.class);
-        Call<Result> call = service.userPay(fullname, email, number, code, amount, apptoken , ClientReference);
+            Api api = new Api();
+            ApiCall service = api.getRetro().create(ApiCall.class);
+            Call<Result> call = service.userPay(fullname, email, number, code, amount, apptoken, ClientReference, mID, yeargroupid, userid);
 
-        call.enqueue(new Callback<Result>() {
-            @Override
-            public void onResponse(Call<Result> call, Response<Result> response) {
-                progressDialog.dismiss();
-                if (response.body() != null) {
-                    if (!response.body().getError()) {
-                        Toast.makeText(getApplicationContext(),response.body().getMessage(), Toast.LENGTH_LONG).show() ;
-                    }else{
-                        Toast.makeText(getApplicationContext(),response.body().getMessage(), Toast.LENGTH_LONG).show() ;
+            call.enqueue(new Callback<Result>() {
+                @Override
+                public void onResponse(Call<Result> call, Response<Result> response) {
+                    progressDialog.dismiss();
+                    if (response.body() != null) {
+                        if (!response.body().getError()) {
+                            Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
 
+                        }
                     }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<Result> call, Throwable t) {
-                progressDialog.dismiss();
-                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
+                @Override
+                public void onFailure(Call<Result> call, Throwable t) {
+                    progressDialog.dismiss();
+                    Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
+        }
     }
 
 
     private void loadSpinnerData(String url) {
+
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
         StringRequest stringRequest=new StringRequest(Request.Method.GET, url, new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try{
                     JSONObject jsonObject=new JSONObject(response);
-                    if(jsonObject.getInt("success")==1){
-                        JSONArray jsonArray=jsonObject.getJSONArray("Name");
+
+                    if(jsonObject.getInt("error")==0){
+
+                        JSONArray jsonArray=jsonObject.getJSONArray("account");
+
                         for(int i=0;i<jsonArray.length();i++){
+
                             JSONObject jsonObject1=jsonArray.getJSONObject(i);
-                            String country=jsonObject1.getString("Country");
-                            YearGroupName.add(country);
+                            String acc_id=jsonObject1.getString("acc_id");
+                            String accname=jsonObject1.getString("accname");
+                            Group.put(Integer.valueOf(acc_id), accname);
+                            YearGroupName.add(accname);
+
                         }
                     }
                     spinner.setAdapter(new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, YearGroupName));
@@ -171,8 +196,28 @@ public class ActivityAirtelPay extends AppCompatActivity implements View.OnClick
     }
 
 
+    private boolean allDataSet() {
+
+        amount = editTextAmount.getText().toString();
+        number = editTextNumber.getText().toString();
+
+        if(TextUtils.isEmpty(amount)){
+            editTextAmount.setError("Enter Amount");
+            return false;
+
+        }else if ( TextUtils.isEmpty(number)){
+            editTextNumber.setError("Enter Payment Number");
+            return false;
+        } else {
+            return true;
+        }
+
+    }
+
     @Override
     public void onClick(View view) {
+
+
         if (view == buttonpay) {
             userPay();
         }

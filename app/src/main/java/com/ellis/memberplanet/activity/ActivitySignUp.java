@@ -78,7 +78,7 @@ public class ActivitySignUp extends AppCompatActivity implements View.OnClickLis
 
 
     private Spinner spinner;
-    private String URL="http://28c67797.ngrok.io/memberplanet/APIs/getyeargroup.php";
+    private String URL="http://28c67797.ngrok.io/memberplanet/APIs/getyeargroupspinner.php";
     private  ArrayList<String> YearGroupName;
     Map<Integer, String> Group = new HashMap<>();
 

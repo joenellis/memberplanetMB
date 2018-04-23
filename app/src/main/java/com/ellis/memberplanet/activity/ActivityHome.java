@@ -27,7 +27,7 @@ import com.ellis.memberplanet.activity.activitypay.ActivityTigoPay;
 import com.ellis.memberplanet.fragment.FragmentCategory;
 import com.ellis.memberplanet.fragment.FragmentEvent;
 import com.ellis.memberplanet.fragment.FragmentHome;
-import com.ellis.memberplanet.fragment.FragmentMyProduct;
+import com.ellis.memberplanet.fragment.FragmentMyMembers;
 import com.ellis.memberplanet.fragment.TransFragment;
 import com.ellis.memberplanet.object.ObjectUser;
 import com.ellis.memberplanet.session.SharedPrefManager;
@@ -214,14 +214,14 @@ public class ActivityHome extends AppCompatActivity {
 
 
             case "Members":
-                FragmentMyProduct fragmentMyProduct = new FragmentMyProduct();
+                FragmentMyMembers fragmentMyMembers = new FragmentMyMembers();
                 mFragmentManager
                         .beginTransaction()
-                        .replace(R.id.homeLayout, fragmentMyProduct, TAG)
+                        .replace(R.id.homeLayout, fragmentMyMembers, TAG)
                         .commit();
 
                 mToolbar.setTitle(TAG);
-                mCurrentFragment = fragmentMyProduct;
+                mCurrentFragment = fragmentMyMembers;
                 break;
 
 

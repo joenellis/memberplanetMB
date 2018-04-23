@@ -386,42 +386,42 @@ public class ActivityEditProduct extends AppCompatActivity implements GoogleApiC
         progressDialog.show();
 
         final Api api = new Api();
-        ApiCall service = api.getRetro().create(ApiCall.class);
-        Call<Result> call = service.productdetails(productId);
-        call.enqueue(new Callback<Result>() {
-            @Override
-            public void onResponse(Call<Result> call, Response<Result> response) {
-                progressDialog.dismiss();
-                if (response.body() != null) {
-                    if (!response.body().getError()) {
-                        progressDialog.dismiss();
-                        Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
-                        //onLoginBackground();
-
-                        productName = response.body().getObjectProductdetail().getProductname();
-                        productDescription = response.body().getObjectProductdetail().getDescription();
-                        productPrice = response.body().getObjectProductdetail().getPrice();
-                        productLocation = response.body().getObjectProductdetail().getLocation();
-                        categoryid = response.body().getObjectProductdetail().getCategory_id();
-
-                        mProductName.setText(productName);
-                        mProductDescrition.setText(productDescription);
-                        mProductPrice.setText(productPrice);
-
-                    } else {
-                        Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
-                        progressDialog.dismiss();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Result> call, Throwable t) {
-                progressDialog.dismiss();
-                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
-                progressDialog.dismiss();
-            }
-        });
+//        ApiCall service = api.getRetro().create(ApiCall.class);
+//        Call<Result> call = service.productdetails(productId);
+//        call.enqueue(new Callback<Result>() {
+//            @Override
+//            public void onResponse(Call<Result> call, Response<Result> response) {
+//                progressDialog.dismiss();
+//                if (response.body() != null) {
+//                    if (!response.body().getError()) {
+//                        progressDialog.dismiss();
+//                        Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
+//                        //onLoginBackground();
+//
+//                        productName = response.body().getObjectProductdetail().getProductname();
+//                        productDescription = response.body().getObjectProductdetail().getDescription();
+//                        productPrice = response.body().getObjectProductdetail().getPrice();
+//                        productLocation = response.body().getObjectProductdetail().getLocation();
+//                        categoryid = response.body().getObjectProductdetail().getCategory_id();
+//
+//                        mProductName.setText(productName);
+//                        mProductDescrition.setText(productDescription);
+//                        mProductPrice.setText(productPrice);
+//
+//                    } else {
+//                        Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
+//                        progressDialog.dismiss();
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Result> call, Throwable t) {
+//                progressDialog.dismiss();
+//                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+//                progressDialog.dismiss();
+//            }
+//        });
     }
 
 

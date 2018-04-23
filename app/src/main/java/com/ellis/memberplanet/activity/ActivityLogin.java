@@ -27,18 +27,10 @@ public class ActivityLogin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login_new);
 
         init();
 
-        mToolbar = findViewById(R.id.toolbar);
-        mToolbar.setTitle("Login");
-        setSupportActionBar(mToolbar);
-
-        assert getSupportActionBar() != null;
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(true);
     }
 
     public boolean onLoginClick(View view) {
@@ -56,8 +48,9 @@ public class ActivityLogin extends AppCompatActivity {
             password.setError("Enter password");
             return false; }
 
-         final ProgressDialog progressDialog = new ProgressDialog(this);
+        final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Logging In...");
+        progressDialog.setCancelable(false);
         progressDialog.show();
 
 

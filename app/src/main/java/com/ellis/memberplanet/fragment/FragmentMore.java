@@ -16,12 +16,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.ellis.memberplanet.adapter.AdapterMyProduct;
+import com.ellis.memberplanet.adapter.AdapterMyMembers;
 import com.ellis.memberplanet.api.Api;
 import com.ellis.memberplanet.api.ApiCall;
 import com.ellis.memberplanet.api.Result;
 import com.ellis.memberplanet.R;
 import com.ellis.memberplanet.object.ObjectProduct;
+import com.ellis.memberplanet.object.ObjectUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,8 +35,8 @@ public class FragmentMore extends Fragment {
 
     RecyclerView.LayoutManager layoutManager;
     RecyclerView mRecyclerViewMore;
-    private ArrayList<ObjectProduct> products;
-    private AdapterMyProduct adapter;
+    private ArrayList<ObjectUser> products;
+    private AdapterMyMembers adapter;
 
     public FragmentMore() {
     }
@@ -71,8 +72,8 @@ public class FragmentMore extends Fragment {
                 if (response.body() != null) {
                     if (!response.body().getError()) {
                         Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_LONG).show();
-                        products = response.body().getObjectProducts();
-                        adapter = new AdapterMyProduct(getContext(), response.body().getObjectProducts());
+                        products = response.body().getObjectUsers();
+                        adapter = new AdapterMyMembers(getContext(), products);
                         mRecyclerViewMore.setAdapter(adapter);
 
                     } else {
@@ -90,35 +91,35 @@ public class FragmentMore extends Fragment {
         return rootView;
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-
-        inflater.inflate(R.menu.home_menu, menu);
-
-        final MenuItem searchItem = menu.findItem(R.id.action_search);
-        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-
-                return true;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-
-                final List<ObjectProduct> filteredModelList = adapter.filter(products, newText);
-                adapter.animateTo(filteredModelList);
-                mRecyclerViewMore.scrollToPosition(0);
-
-                return true;
-            }
-        });
-
-    }
-
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//
+//        inflater.inflate(R.menu.home_menu, menu);
+//
+//        final MenuItem searchItem = menu.findItem(R.id.action_search);
+//        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+//
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//
+//                return true;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//
+//                final List<ObjectProduct> filteredModelList = adapter.filter(products, newText);
+//                adapter.animateTo(filteredModelList);
+//                mRecyclerViewMore.scrollToPosition(0);
+//
+//                return true;
+//            }
+//        });
+//
+//    }
+//
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -30,11 +30,19 @@ public interface ApiCall {
     @GET("getevent.php")
     Call<Result> event();
 
-    @GET("getproducts.php")
-    Call<Result> mproducts(@Query("userid") String userid);
+    @GET("getmymembers.php")
+    Call<Result> mymembers(@Query("yeargroupid") String yeargroupid);
 
     @GET("getprofile.php")
     Call<Result> userprofile(@Query("userid") String userid);
+
+    @GET("getqrcode.php")
+    Call<Result> qrcode(@Query("eventid") String mID);
+
+    @GET("attendance.php")
+    Call<Result> markattendance(@Query("userid") String userid,
+                                @Query("attendance") String attend,
+                                @Query("mID") String mID);
 
     @GET("getcategoryproducts.php")
     Call<Result> productcaegory(@Query("categoryid") String categoryid);
@@ -42,13 +50,17 @@ public interface ApiCall {
     @GET("getproductdetail.php")
     Call<Result> productdetails(@Query("productid") String productid);
 
-    @GET("scan.php")
-    Call<Result> userScan(@Query("attendance") String attendance, @Query("email") String email);
-
     @GET("mine.php")
-    Call<Result> userPay(@Query("name") String fullname, @Query("email") String email, @Query("number") String number,
-                         @Query("channel") String channel, @Query("amount") String amount, @Query("token") String token,
-                         @Query("clientreference") String clientreference);
+    Call<Result> userPay(@Query("name") String fullname,
+                         @Query("email") String email,
+                         @Query("number") String number,
+                         @Query("channel") String channel,
+                         @Query("amount") String amount,
+                         @Query("token") String token,
+                         @Query("clientreference") String clientreference,
+                         @Query("mID") String mID,
+                         @Query("yeargroupid") String yeargroupid,
+                         @Query("userid") String userid);
 
     @GET("transaction.php")
     Call<Result> userTransaction(@Query("userid") String userid);

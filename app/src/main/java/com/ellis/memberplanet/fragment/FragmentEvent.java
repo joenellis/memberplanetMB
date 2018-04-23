@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.ellis.memberplanet.R;
 import com.ellis.memberplanet.adapter.AdapterEvent;
-import com.ellis.memberplanet.adapter.AdapterProduct;
 import com.ellis.memberplanet.api.Api;
 import com.ellis.memberplanet.api.ApiCall;
 import com.ellis.memberplanet.api.Result;

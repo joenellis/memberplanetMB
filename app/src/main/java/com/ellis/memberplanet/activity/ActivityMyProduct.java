@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.bumptech.glide.Glide;
 import com.ellis.memberplanet.R;
 import com.ellis.memberplanet.api.Api;
 import com.ellis.memberplanet.api.ApiCall;
@@ -64,7 +65,7 @@ public class ActivityMyProduct extends AppCompatActivity {
         initializeComponents();
 
         mToolbar = findViewById(R.id.toolbar);
-        mToolbar.setTitle("Year Members");
+        mToolbar.setTitle("Member");
         setSupportActionBar(mToolbar);
 
         assert getSupportActionBar() != null;
@@ -93,25 +94,30 @@ public class ActivityMyProduct extends AppCompatActivity {
 
                 if (response.body() != null) {
                     if (!response.body().getError()) {
-
-                        String productname = response.body().getObjectProductdetail().getProductname();
-                        String image = response.body().getObjectProductdetail().getImage();
-                        String description = response.body().getObjectProductdetail().getDescription();
-                        String farmername = response.body().getObjectProductdetail().getFullname();
-                        String price = response.body().getObjectProductdetail().getPrice();
-                        location = response.body().getObjectProductdetail().getLocation();
-                        audio = response.body().getObjectProductdetail().getAudio();
-                        video = response.body().getObjectProductdetail().getVideo();
-                        contact = response.body().getObjectProductdetail().getContact();
-
 //
-//                        mProductName.setText(productname);
-//                        Glide.with(getApplicationContext()).load(image).into(mProductImage);
-//                        mDescription.setText(description);
-//                        mFarmerName.setText(farmername);
-//                        mPrice.setText(price);
-//                        mLocation.setText(location);
-//                        mCall.setText(contact);
+//
+//                        FullName = response.body().getObjectUser().getFullname();
+//                        Contact = response.body().getObjectUser().getContact();
+//                        Email = response.body().getObjectUser().getEmail();
+//                        dob = response.body().getObjectUser().getDob();
+//                        employment_status = response.body().getObjectUser().getEmployment_status();
+//                        profession = response.body().getObjectUser().getProfession();
+//                        organisation = response.body().getObjectUser().getOrganisation();
+//                        address = response.body().getObjectUser().getAddress();
+//                        yeargroup = response.body().getObjectUser().getYeargroupname();
+//                        image = response.body().getObjectUser().getImage();
+//
+//                        TextFullName.setText(FullName);
+//                        TextEmail.setText(Email);
+//                        TextContact.setText(Contact);
+//                        Textdob.setText(dob);
+//                        TextempStatus.setText(employment_status);
+//                        Textprofession.setText(profession);
+//                        Textoraganisation.setText(organisation);
+//                        Textaddress.setText(address);
+//                        Textyeargroup.setText(yeargroup);
+//
+//                        Glide.with(getApplicationContext()).load(image).into(mImage);
 
                         Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
                     } else {

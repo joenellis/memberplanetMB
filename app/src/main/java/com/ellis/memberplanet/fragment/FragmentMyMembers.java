@@ -15,12 +15,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.ellis.memberplanet.adapter.AdapterMyProduct;
+import com.ellis.memberplanet.adapter.AdapterMyMembers;
 import com.ellis.memberplanet.api.Api;
 import com.ellis.memberplanet.api.ApiCall;
 import com.ellis.memberplanet.api.Result;
 import com.ellis.memberplanet.R;
 import com.ellis.memberplanet.object.ObjectProduct;
+import com.ellis.memberplanet.object.ObjectUser;
 import com.ellis.memberplanet.session.SharedPrefManager;
 
 import java.util.ArrayList;
@@ -30,13 +31,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class FragmentMyProduct extends Fragment {
+public class FragmentMyMembers extends Fragment {
 
 
     RecyclerView.LayoutManager layoutManager;
     RecyclerView recyclerView;
-    private ArrayList<ObjectProduct> products;
-    private AdapterMyProduct adapter;
+    private ArrayList<ObjectUser> members;
+    private AdapterMyMembers adapter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,14 +53,12 @@ public class FragmentMyProduct extends Fragment {
         recyclerView = rootView.findViewById(R.id.recyclerViewMyProducts);
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        String userid = SharedPrefManager.getInstance(getActivity()).getobjectUser().getUser_id();
-
-
+        String yeargroupid = SharedPrefManager.getInstance(getActivity()).getobjectUser().getYeargroupid();
 
 
         Api api = new Api();
         ApiCall service = api.getRetro().create(ApiCall.class);
-        Call<Result> call = service.mproducts(userid);
+        Call<Result> call = service.mymembers(yeargroupid);
 
         call.enqueue(new Callback<Result>() {
             @Override
@@ -68,8 +67,8 @@ public class FragmentMyProduct extends Fragment {
                 if (response.body() != null) {
                 if (!response.body().getError()) {
                     Toast.makeText(getActivity(),response.body().getMessage(), Toast.LENGTH_LONG).show() ;
-                    products = response.body().getObjectProducts();
-                    adapter = new AdapterMyProduct(getContext(),products);
+                    members = response.body().getObjectUsers();
+                    adapter = new AdapterMyMembers(getContext(), members);
                     recyclerView.setAdapter(adapter);
 
                 } else {
@@ -107,7 +106,7 @@ public class FragmentMyProduct extends Fragment {
             @Override
             public boolean onQueryTextChange(String newText) {
 
-                final List<ObjectProduct> filteredModelList = adapter.filter(products, newText);
+                final List<ObjectUser> filteredModelList = adapter.filter(members, newText);
                 adapter.animateTo(filteredModelList);
                 recyclerView.scrollToPosition(0);
 

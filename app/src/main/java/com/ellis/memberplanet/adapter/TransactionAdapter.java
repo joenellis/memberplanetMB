@@ -53,9 +53,9 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
 
         public ViewHolder(View view) {
             super(view);
-            description = (TextView) view.findViewById(R.id.description);
-            amount = (TextView) view.findViewById(R.id.amount);
-            date = (TextView) view.findViewById(R.id.dated);
+            description = view.findViewById(R.id.description);
+            amount = view.findViewById(R.id.amount);
+            date = view.findViewById(R.id.dated);
         }
     }
 }

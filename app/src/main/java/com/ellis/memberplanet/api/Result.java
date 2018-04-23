@@ -16,11 +16,15 @@ public class Result {
     @SerializedName("message")
     private String message;
 
+    @SerializedName("qrcode")
+    private String qrocde;
+
     @SerializedName("user")
     private ObjectUser objectUser;
 
     @SerializedName("transaction")
     private ArrayList<Trans> trans;
+
     @SerializedName("product")
     private  ObjectProduct objectProductdetail;
 
@@ -29,6 +33,9 @@ public class Result {
 
     @SerializedName("events")
     private ArrayList<ObjectEvent> objectEvents;
+
+    @SerializedName("members")
+    private ArrayList<ObjectUser> objectUsers;
 
     @SerializedName("products")
     private ArrayList<ObjectProduct> objectProducts;
@@ -126,6 +133,14 @@ public class Result {
     }
 
     public ArrayList<ObjectEvent> getObjectEvents() {
-        return objectEvents;
+    return objectEvents;
+}
+
+    public ArrayList<ObjectUser> getObjectUsers() {
+        return objectUsers;
+    }
+
+    public String getQrocde() {
+        return qrocde;
     }
 }

@@ -1,19 +1,69 @@
 package com.ellis.memberplanet.object;
 
+import com.google.gson.annotations.SerializedName;
+
 public class ObjectUser {
 
+    @SerializedName("user_id")
     private String user_id;
+
+    @SerializedName("year_group_id")
     private String year_group_id;
+
+    @SerializedName("fullname")
     private String fullname;
+
+    @SerializedName("firstname")
+    private String firstname;
+
+    @SerializedName("lastname")
+    private String lastname;
+
+    @SerializedName("email")
     private String email;
+
+    @SerializedName("password")
     private String password;
+
+    @SerializedName("contact")
     private String contact;
+
+    @SerializedName("dob")
     private String dob;
+
+    @SerializedName("employment_status")
     private String employment_status;
+
+    @SerializedName("profession")
     private String profession;
+
+    @SerializedName("organisation")
     private String organisation;
+
+    @SerializedName("address")
     private String address;
+
+    public ObjectUser(String user_id, String year_group_id, String firstname, String lastname, String email, String password, String contact, String dob, String employment_status, String profession, String organisation, String address, String image, String yeargroupname) {
+        this.user_id = user_id;
+        this.year_group_id = year_group_id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.password = password;
+        this.contact = contact;
+        this.dob = dob;
+        this.employment_status = employment_status;
+        this.profession = profession;
+        this.organisation = organisation;
+        this.address = address;
+        this.image = image;
+        this.yeargroupname = yeargroupname;
+    }
+
+    @SerializedName("image")
     private String image;
+
+    @SerializedName("yeargroupname")
     private String yeargroupname;
 
     public ObjectUser() {
@@ -108,5 +158,14 @@ public class ObjectUser {
     public String getYeargroupname() {
         return yeargroupname;
     }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
 
 }

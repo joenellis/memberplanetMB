@@ -11,21 +11,21 @@ import android.widget.TextView;
 
 import com.ellis.memberplanet.R;
 import com.ellis.memberplanet.activity.ActivityMyProduct;
-import com.ellis.memberplanet.object.ObjectProduct;
+import com.ellis.memberplanet.object.ObjectUser;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class AdapterMyProduct extends RecyclerView.Adapter<AdapterMyProduct.ProductHolder> {
+public class AdapterMyMembers extends RecyclerView.Adapter<AdapterMyMembers.ProductHolder> {
 
     private Context mContext;
-    private List<ObjectProduct> mProducts;
+    private List<ObjectUser> mMembers;
 
-    public AdapterMyProduct(Context mContext, List<ObjectProduct> mProducts) {
+    public AdapterMyMembers(Context mContext, List<ObjectUser> mMembers) {
         this.mContext = mContext;
-        this.mProducts = mProducts;
+        this.mMembers = mMembers;
     }
 
     @Override
@@ -39,31 +39,31 @@ public class AdapterMyProduct extends RecyclerView.Adapter<AdapterMyProduct.Prod
     @Override
     public void onBindViewHolder(ProductHolder holder, int position) {
 
-        final ObjectProduct product = mProducts.get(position);
+        final ObjectUser members = mMembers.get(position);
 
-        holder.text1.setText(product.getProductname());
-        holder.text2.setText(product.getPrice());
-        Glide.with(this.mContext).load(product.getImage()).into(holder.imageView);
+        holder.text1.setText(members.getFirstname() + " " + members.getLastname());
+        holder.text2.setText(members.getProfession());
+        Glide.with(this.mContext).load(members.getImage()).into(holder.imageView);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, ActivityMyProduct.class);
-                intent.putExtra("ID", product.getProduct_id());
+                intent.putExtra("ID", members.getUser_id());
                 mContext.startActivity(intent);
             }
         });
 
     }
 
-    public List<ObjectProduct> filter(List<ObjectProduct> products, String query) {
+    public List<ObjectUser> filter(List<ObjectUser> products, String query) {
         query = query.toLowerCase();
 
-        ArrayList<ObjectProduct> filteredCompanyList = new ArrayList<>();
+        ArrayList<ObjectUser> filteredCompanyList = new ArrayList<>();
 
-        for (ObjectProduct item : products) {
-            final String productName = item.getProductname().toLowerCase();
-            final String productPrice = item.getPrice().toLowerCase();
+        for (ObjectUser item : products) {
+            final String productName = item.getFullname().toLowerCase();
+            final String productPrice = item.getEmail().toLowerCase();
             if (productName.contains(query) || productPrice.contains(query)) {
                 filteredCompanyList.add(item);
             }
@@ -71,59 +71,59 @@ public class AdapterMyProduct extends RecyclerView.Adapter<AdapterMyProduct.Prod
         return filteredCompanyList;
     }
 
-    public void animateTo(List<ObjectProduct> models) {
+    public void animateTo(List<ObjectUser> models) {
         applyAndAnimateRemovals(models);
         applyAndAnimateAdditions(models);
         applyAndAnimateMovedItems(models);
     }
 
-    private void applyAndAnimateRemovals(List<ObjectProduct> newModels) {
-        for (int i = mProducts.size() - 1; i >= 0; i--) {
-            final ObjectProduct model = mProducts.get(i);
+    private void applyAndAnimateRemovals(List<ObjectUser> newModels) {
+        for (int i = mMembers.size() - 1; i >= 0; i--) {
+            final ObjectUser model = mMembers.get(i);
             if (!newModels.contains(model)) {
                 removeItem(i);
             }
         }
     }
 
-    private void applyAndAnimateAdditions(List<ObjectProduct> newModels) {
+    private void applyAndAnimateAdditions(List<ObjectUser> newModels) {
         for (int i = 0, count = newModels.size(); i < count; i++) {
-            final ObjectProduct model = newModels.get(i);
-            if (!mProducts.contains(model)) {
+            final ObjectUser model = newModels.get(i);
+            if (!mMembers.contains(model)) {
                 addItem(i, model);
             }
         }
     }
 
-    private void applyAndAnimateMovedItems(List<ObjectProduct> newModels) {
+    private void applyAndAnimateMovedItems(List<ObjectUser> newModels) {
         for (int toPosition = newModels.size() - 1; toPosition >= 0; toPosition--) {
-            final ObjectProduct model = newModels.get(toPosition);
-            final int fromPosition = mProducts.indexOf(model);
+            final ObjectUser model = newModels.get(toPosition);
+            final int fromPosition = mMembers.indexOf(model);
             if (fromPosition >= 0 && fromPosition != toPosition) {
                 moveItem(fromPosition, toPosition);
             }
         }
     }
 
-    public ObjectProduct removeItem(int position) {
-        final ObjectProduct model = mProducts.remove(position);
+    public ObjectUser removeItem(int position) {
+        final ObjectUser model = mMembers.remove(position);
         notifyItemRemoved(position);
         return model;
     }
 
-    public void addItem(int position, ObjectProduct model) {
-        mProducts.add(position, model);
+    public void addItem(int position, ObjectUser model) {
+        mMembers.add(position, model);
         notifyItemInserted(position);
     }
 
     public void moveItem(int fromPosition, int toPosition) {
-        final ObjectProduct model = mProducts.remove(fromPosition);
-        mProducts.add(toPosition, model);
+        final ObjectUser model = mMembers.remove(fromPosition);
+        mMembers.add(toPosition, model);
         notifyItemMoved(fromPosition, toPosition);
     }
     @Override
     public int getItemCount() {
-        return mProducts.size();
+        return mMembers.size();
     }
 
     class ProductHolder extends RecyclerView.ViewHolder {

@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/activity_margin"
             android:layout_marginStart="@dimen/activity_margin"
-            android:hint="@string/signUp_number"
+            android:hint="Payment Number"
             android:padding="@dimen/min_padding"
             app:layout_constraintEnd_toEndOf="@id/signUp_layLastName"
             app:layout_constraintStart_toStartOf="@id/signUp_layFirstName"

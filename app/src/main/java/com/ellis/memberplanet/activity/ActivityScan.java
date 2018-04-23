@@ -1,5 +1,6 @@
 package com.ellis.memberplanet.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
@@ -29,8 +30,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.ellis.memberplanet.api.Api;
+import com.ellis.memberplanet.api.ApiCall;
+import com.ellis.memberplanet.api.Result;
+import com.ellis.memberplanet.session.SharedPrefManager;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by joenellis on 18/04/2018.
@@ -40,17 +49,19 @@ public class ActivityScan extends AppCompatActivity{
     private TextInputEditText email;
 
     private Toolbar mToolbar;
-
+    final private String attend = "present";
     private String mID;
-    private String mEvent;
+    //private String mEvent;
+    private String mYearGroup;
+
+    final private String URL="http://28c67797.ngrok.io/memberplanet/APIs/geteventspinner.php";
     private Spinner spinner;
-    private String URL="http://28c67797.ngrok.io/memberplanet/APIs/geteventspinner.php";
-    private  ArrayList<String> EventName;
-    Map<Integer, String> event = new HashMap<>();
+    private  ArrayList<String> YearGroupName;
+    Map<Integer, String> Group = new HashMap<>();
 
 
     private Button buttonScan;
-    final private String qr_code = "http://60913140.ngrok.io/APIs/";
+    private String qr_code;
     private  IntentIntegrator integrator;
 
     @Override
@@ -68,10 +79,10 @@ public class ActivityScan extends AppCompatActivity{
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
-
-        ////Spinner foryear groups
-        EventName =new ArrayList<>();
-        loadSpinnerData(URL);
+//
+//        ////Spinner foryear groups
+//        EventName =new ArrayList<>();
+//        loadSpinnerData(URL);
 
         buttonScan = findViewById(R.id.buttonScan);
 
@@ -98,20 +109,23 @@ public class ActivityScan extends AppCompatActivity{
 
         });
 
+        ////Spinner foryear groups
+        YearGroupName=new ArrayList<>();
         loadSpinnerData(URL);
+
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                mEvent =spinner.getItemAtPosition(spinner.getSelectedItemPosition()).toString();
+                mYearGroup=spinner.getItemAtPosition(spinner.getSelectedItemPosition()).toString();
 
                 String s = spinner.getSelectedItem().toString();
-                for (Map.Entry<Integer, String> entry : event.entrySet()) {
-                    Integer Eventid = entry.getKey();
+                for (Map.Entry<Integer, String> entry : Group.entrySet()) {
+                    Integer YearGroupId = entry.getKey();
                     String value = entry.getValue();
                     if (s.matches(value)){
-                        Toast.makeText(getApplicationContext(), ""+Eventid, Toast.LENGTH_SHORT).show();
-                        mID = String.valueOf(Eventid);
+                        Toast.makeText(getApplicationContext(), ""+YearGroupId, Toast.LENGTH_SHORT).show();
+                        mID = String.valueOf(YearGroupId);
                     }
                 }
             }
@@ -122,6 +136,45 @@ public class ActivityScan extends AppCompatActivity{
         });
 
     }
+
+//    private void loadSpinnerData(String url) {
+//
+//        RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
+//        StringRequest stringRequest=new StringRequest(Request.Method.GET, url, new com.android.volley.Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                try{
+//                    JSONObject jsonObject=new JSONObject(response);
+//
+//                    if(jsonObject.getInt("error")==0){
+//
+//                        JSONArray jsonArray=jsonObject.getJSONArray("events");
+//
+//                        for(int i=0;i<jsonArray.length();i++){
+//
+//                            JSONObject jsonObject1=jsonArray.getJSONObject(i);
+//                            String eventid=jsonObject1.getString("eventid");
+//                            String eventname=jsonObject1.getString("name");
+//                            event.put(Integer.valueOf(eventid), eventname);
+//                            EventName.add(eventname);
+//
+//                        }
+//                    }
+//                    spinner.setAdapter(new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, EventName));
+//                }catch (JSONException e){e.printStackTrace();}
+//            }
+//        }, new com.android.volley.Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                error.printStackTrace();
+//            }
+//        });
+//        int socketTimeout = 30000;
+//        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+//        stringRequest.setRetryPolicy(policy);
+//        requestQueue.add(stringRequest);
+//    }
+
     private void loadSpinnerData(String url) {
 
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
@@ -139,13 +192,13 @@ public class ActivityScan extends AppCompatActivity{
 
                             JSONObject jsonObject1=jsonArray.getJSONObject(i);
                             String eventid=jsonObject1.getString("eventid");
-                            String eventname=jsonObject1.getString("name");
-                            event.put(Integer.valueOf(eventid), eventname);
-                            EventName.add(eventname);
+                            String name=jsonObject1.getString("name");
+                            Group.put(Integer.valueOf(eventid), name);
+                            YearGroupName.add(name);
 
                         }
                     }
-                    spinner.setAdapter(new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, EventName));
+                    spinner.setAdapter(new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, YearGroupName));
                 }catch (JSONException e){e.printStackTrace();}
             }
         }, new com.android.volley.Response.ErrorListener() {
@@ -159,6 +212,39 @@ public class ActivityScan extends AppCompatActivity{
         stringRequest.setRetryPolicy(policy);
         requestQueue.add(stringRequest);
     }
+
+    private void getQrCode() {
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Verifying Event...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+
+        Api api = new Api();
+        ApiCall service = api.getRetro().create(ApiCall.class);
+        Call<Result> call = service.qrcode(mID);
+
+        call.enqueue(new Callback<Result>() {
+            @Override
+            public void onResponse(Call<Result> call, Response<Result> response) {
+                progressDialog.dismiss();
+                if (response.body() != null) {
+                    if (!response.body().getError()) {
+                        qr_code = response.body().getQrocde().toString();
+                    } else {
+                        Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Result> call, Throwable t) {
+                progressDialog.dismiss();
+                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult resultcode = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
@@ -173,7 +259,7 @@ public class ActivityScan extends AppCompatActivity{
 
                 if(qrcode.matches(qr_code) || qrcode.length() == qr_code.length()) {
                     Toast.makeText(this,"we made it!", Toast.LENGTH_SHORT).show();
-                    // Scan();
+                    Scan();
                 }else{
                     Toast.makeText(this,"Wrong QR Code Scanned", Toast.LENGTH_SHORT).show();
                 }
@@ -181,6 +267,39 @@ public class ActivityScan extends AppCompatActivity{
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    private void Scan() {
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Verifying Event...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        String userid = SharedPrefManager.getInstance(getApplicationContext()).getobjectUser().getUser_id();
+
+        Api api = new Api();
+        ApiCall service = api.getRetro().create(ApiCall.class);
+        Call<Result> call = service.markattendance(userid,attend,mID);
+
+        call.enqueue(new Callback<Result>() {
+            @Override
+            public void onResponse(Call<Result> call, Response<Result> response) {
+                progressDialog.dismiss();
+                if (response.body() != null) {
+                    if (!response.body().getError()) {
+                        Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Result> call, Throwable t) {
+                progressDialog.dismiss();
+                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
 }
