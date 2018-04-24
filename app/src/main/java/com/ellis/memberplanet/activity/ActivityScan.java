@@ -126,6 +126,7 @@ public class ActivityScan extends AppCompatActivity{
                     if (s.matches(value)){
                         Toast.makeText(getApplicationContext(), ""+YearGroupId, Toast.LENGTH_SHORT).show();
                         mID = String.valueOf(YearGroupId);
+                        getQrCode();
                     }
                 }
             }
