@@ -10,21 +10,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ellis.memberplanet.activity.ActivityMyProduct;
+import com.ellis.memberplanet.object.ObjectMembers;
 import com.ellis.memberplanet.object.ObjectProduct;
 import com.ellis.memberplanet.R;
 import com.bumptech.glide.Glide;
+import com.ellis.memberplanet.object.ObjectYearGroup;
 //import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterCategoryMembers extends RecyclerView.Adapter<AdapterCategoryMembers.ProductHolder> {
 
     private Context mContext;
-    private List<ObjectProduct> products;
+    private List<ObjectMembers> yearGroups;
 
-    public AdapterCategoryMembers(Context mContext, List<ObjectProduct> products) {
+    public AdapterCategoryMembers(Context mContext, List<ObjectMembers> products) {
         this.mContext = mContext;
-        this.products = products;
+        this.yearGroups = products;
     }
 
     @Override
@@ -37,30 +40,30 @@ public class AdapterCategoryMembers extends RecyclerView.Adapter<AdapterCategory
     @Override
     public void onBindViewHolder(ProductHolder holder, int position) {
 
-        final ObjectProduct product = products.get(position);
+       // final ObjectYearGroup yeargroups = yearGroups.get(position);
 
-        String price = "GhC " + product.getPrice();
-
-        holder.productName.setText(product.getProductname());
-        holder.productPrice.setText(price);
-        Glide.with(this.mContext).load(product.getImage()).into(holder.productImage);
-
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(mContext, ActivityMyProduct.class);
-                intent.putExtra("ID", product.getProduct_id());
-                mContext.startActivity(intent);
-            }
-        });
+//        String price = "GhC " + yeargroups.getPrice();
+//
+//        holder.productName.setText(yeargroups.getProductname());
+//        holder.productPrice.setText(price);
+//        Glide.with(this.mContext).load(yeargroups.getImage()).into(holder.productImage);
+//
+//
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                Intent intent = new Intent(mContext, ActivityMyProduct.class);
+//                intent.putExtra("ID", yeargroups.getProduct_id());
+//                mContext.startActivity(intent);
+//            }
+//        });
 
     }
 
     @Override
     public int getItemCount() {
-        return products.size();
+        return yearGroups.size();
     }
 
 

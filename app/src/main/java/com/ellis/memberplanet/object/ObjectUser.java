@@ -43,22 +43,6 @@ public class ObjectUser {
     @SerializedName("address")
     private String address;
 
-    public ObjectUser(String user_id, String year_group_id, String firstname, String lastname, String email, String password, String contact, String dob, String employment_status, String profession, String organisation, String address, String image, String yeargroupname) {
-        this.user_id = user_id;
-        this.year_group_id = year_group_id;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.email = email;
-        this.password = password;
-        this.contact = contact;
-        this.dob = dob;
-        this.employment_status = employment_status;
-        this.profession = profession;
-        this.organisation = organisation;
-        this.address = address;
-        this.image = image;
-        this.yeargroupname = yeargroupname;
-    }
 
     @SerializedName("image")
     private String image;
@@ -79,6 +63,22 @@ public class ObjectUser {
 //        this.answer = answer;
 //    }
 
+    public ObjectUser(String user_id, String year_group_id, String firstname, String lastname, String email, String password, String contact, String dob, String employment_status, String profession, String organisation, String address, String image, String yeargroupname) {
+        this.user_id = user_id;
+        this.year_group_id = year_group_id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.password = password;
+        this.contact = contact;
+        this.dob = dob;
+        this.employment_status = employment_status;
+        this.profession = profession;
+        this.organisation = organisation;
+        this.address = address;
+        this.image = image;
+        this.yeargroupname = yeargroupname;
+    }
 
     public ObjectUser(String user_id, String year_group_id, String fullname, String email, String password, String contact, String dob, String employment_status, String profession, String organisation, String address, String image, String yeargroupname) {
         this.user_id = user_id;

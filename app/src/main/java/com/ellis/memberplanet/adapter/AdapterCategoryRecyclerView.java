@@ -14,28 +14,23 @@ import android.widget.TextView;
 
 import com.ellis.memberplanet.R;
 import com.ellis.memberplanet.fragment.FragmentMore;
+import com.ellis.memberplanet.object.ObjectMembers;
 import com.ellis.memberplanet.object.ObjectProduct;
+import com.ellis.memberplanet.object.ObjectYearGroup;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterCategoryRecyclerView extends RecyclerView.Adapter<AdapterCategoryRecyclerView.CategoryHolder> {
 
-    private  ArrayList<ArrayList<ObjectProduct>> categories;
+    private ArrayList<List<ObjectMembers>> categories;
     private Context mContext;
     private ArrayList mImage;
-    private List<ObjectProduct> products;
     private String[] category = {"Tubers","Fruits","Vegetables", "Grains", "Dairy/Fish"};
 
 
-    public AdapterCategoryRecyclerView(Context mContext, List<ObjectProduct> products, ArrayList image) {
-        this.mContext = mContext;
-        this.mImage = image;
-        this.products = products;
-
-    }
-
-    public AdapterCategoryRecyclerView(Context mContext, ArrayList<ArrayList<ObjectProduct>> categories) {
+    public AdapterCategoryRecyclerView(Context mContext, ArrayList<List<ObjectMembers>> categories) {
         this.mContext = mContext;
         this.categories = categories;
     }
@@ -52,7 +47,7 @@ public class AdapterCategoryRecyclerView extends RecyclerView.Adapter<AdapterCat
     public void onBindViewHolder(CategoryHolder holder, int position) {
 
 
-        holder.mCategory.setText(category[position]);
+       // holder.mCategory.setText(categories.get());
         String browse = "Connect with recently joined alumni in "+ category[position].toLowerCase()+ " group ";
         holder.mSubtitle.setText(browse);
         holder.mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));

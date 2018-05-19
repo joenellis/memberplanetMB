@@ -138,44 +138,6 @@ public class ActivityScan extends AppCompatActivity{
 
     }
 
-//    private void loadSpinnerData(String url) {
-//
-//        RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
-//        StringRequest stringRequest=new StringRequest(Request.Method.GET, url, new com.android.volley.Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                try{
-//                    JSONObject jsonObject=new JSONObject(response);
-//
-//                    if(jsonObject.getInt("error")==0){
-//
-//                        JSONArray jsonArray=jsonObject.getJSONArray("events");
-//
-//                        for(int i=0;i<jsonArray.length();i++){
-//
-//                            JSONObject jsonObject1=jsonArray.getJSONObject(i);
-//                            String eventid=jsonObject1.getString("eventid");
-//                            String eventname=jsonObject1.getString("name");
-//                            event.put(Integer.valueOf(eventid), eventname);
-//                            EventName.add(eventname);
-//
-//                        }
-//                    }
-//                    spinner.setAdapter(new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, EventName));
-//                }catch (JSONException e){e.printStackTrace();}
-//            }
-//        }, new com.android.volley.Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                error.printStackTrace();
-//            }
-//        });
-//        int socketTimeout = 30000;
-//        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-//        stringRequest.setRetryPolicy(policy);
-//        requestQueue.add(stringRequest);
-//    }
-
     private void loadSpinnerData(String url) {
 
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());

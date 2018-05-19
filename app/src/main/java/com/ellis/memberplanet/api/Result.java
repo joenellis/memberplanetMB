@@ -4,10 +4,13 @@ import com.ellis.memberplanet.object.ObjectEvent;
 import com.ellis.memberplanet.object.ObjectNewsletter;
 import com.ellis.memberplanet.object.ObjectProduct;
 import com.ellis.memberplanet.object.ObjectUser;
+import com.ellis.memberplanet.object.ObjectMembers;
+import com.ellis.memberplanet.object.ObjectYearGroup;
 import com.ellis.memberplanet.object.Trans;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Result {
     @SerializedName("error")
@@ -37,8 +40,8 @@ public class Result {
     @SerializedName("members")
     private ArrayList<ObjectUser> objectUsers;
 
-    @SerializedName("products")
-    private ArrayList<ObjectProduct> objectProducts;
+    @SerializedName("yeargroup")
+    private List<ObjectMembers> objectMembers;
 
     @SerializedName("tubers")
     private ArrayList<ObjectProduct> objectProductTubers;
@@ -100,9 +103,9 @@ public class Result {
         return objectProductdetail;
     }
 
-    public ArrayList<ObjectProduct> getObjectProducts() {
-        return objectProducts;
-    }
+//    public ArrayList<ObjectProduct> getObjectProducts() {
+//        return objectProducts;
+//    }
 
     public ArrayList<ObjectProduct> getObjectProductTubers() {
         return objectProductTubers;
@@ -143,4 +146,10 @@ public class Result {
     public String getQrocde() {
         return qrocde;
     }
+
+
+    public List<ObjectMembers> getObjectMembers() {
+        return objectMembers;
+    }
+
 }

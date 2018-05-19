@@ -16,9 +16,11 @@ import com.ellis.memberplanet.adapter.AdapterCategoryRecyclerView;
 import com.ellis.memberplanet.api.Api;
 import com.ellis.memberplanet.api.ApiCall;
 import com.ellis.memberplanet.api.Result;
-import com.ellis.memberplanet.object.ObjectProduct;
+import com.ellis.memberplanet.object.ObjectMembers;
+import com.ellis.memberplanet.object.ObjectYearGroup;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,7 +28,7 @@ import retrofit2.Response;
 
 public class FragmentCategory extends Fragment {
 
-    ArrayList<ArrayList<ObjectProduct>> categories = new ArrayList<>();
+    ArrayList<List<ObjectMembers>> categories = new ArrayList<java.util.List<ObjectMembers>>();
 
     RecyclerView.LayoutManager mLayoutManagerNew;
     RecyclerView mRecyclerView;
@@ -59,27 +61,13 @@ public class FragmentCategory extends Fragment {
                     if (!response.body().getError()) {
                         Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_LONG).show();
 
-                        if (response.body().getObjectProductTubers() != null) {
-                            if (response.body().getObjectProductTubers().size() != 0)
-                                categories.add(response.body().getObjectProductTubers());
-                        }
-                        if (response.body().getObjectProductFruits() != null) {
-                            if (response.body().getObjectProductFruits().size() != 0)
-                                categories.add(response.body().getObjectProductFruits());
-                        }
-                        if (response.body().getObjectProductVegetables() != null) {
-                            if (response.body().getObjectProductVegetables().size() != 0)
-                                categories.add(response.body().getObjectProductVegetables());
-                        }
-                        if (response.body().getObjectProductGrains() != null) {
-                            if (response.body().getObjectProductGrains().size() != 0)
-                                categories.add(response.body().getObjectProductGrains());
-                        }
-                        if (response.body().getObjectProductDairyFish() != null) {
-                            if (response.body().getObjectProductDairyFish().size() != 0)
-                                categories.add(response.body().getObjectProductDairyFish());
-                        }
+                        if (response.body().getObjectMembers() != null) {
 
+                            for (int i = 0; i < response.body().getObjectMembers().size()  ; i++) {
+                                categories.add(response.body().getObjectMembers());
+                            }
+
+                        }
 
                         AdapterCategoryRecyclerView adapter;
                         adapter = new AdapterCategoryRecyclerView(getContext(), categories);

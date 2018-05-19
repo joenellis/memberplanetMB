@@ -65,7 +65,7 @@ public interface ApiCall {
     @GET("transaction.php")
     Call<Result> userTransaction(@Query("userid") String userid);
 
-    @GET("getcategory.php")
+    @GET("getyeargroup.php")
     Call<Result> category();
 
     @FormUrlEncoded
