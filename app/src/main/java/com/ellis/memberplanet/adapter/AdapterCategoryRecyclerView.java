@@ -21,16 +21,17 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class AdapterCategoryRecyclerView extends RecyclerView.Adapter<AdapterCategoryRecyclerView.CategoryHolder> {
 
-    private ArrayList<List<ObjectMembers>> categories;
+    private ArrayList<Map<String, ArrayList<ObjectMembers>>> categories;
     private Context mContext;
     private ArrayList mImage;
-    private String[] category = {"Tubers","Fruits","Vegetables", "Grains", "Dairy/Fish"};
+   // private String[] category = {"Tubers","Fruits","Vegetables", "Grains", "Dairy/Fish"};
 
 
-    public AdapterCategoryRecyclerView(Context mContext, ArrayList<List<ObjectMembers>> categories) {
+    public AdapterCategoryRecyclerView(Context mContext, ArrayList<Map<String, ArrayList<ObjectMembers>>> categories) {
         this.mContext = mContext;
         this.categories = categories;
     }
@@ -48,7 +49,7 @@ public class AdapterCategoryRecyclerView extends RecyclerView.Adapter<AdapterCat
 
 
        // holder.mCategory.setText(categories.get());
-        String browse = "Connect with recently joined alumni in "+ category[position].toLowerCase()+ " group ";
+        String browse = "Connect with recently joined alumni in ";//+ category[position].toLowerCase()+ " group ";
         holder.mSubtitle.setText(browse);
         holder.mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
         holder.mRecyclerView.setAdapter(new AdapterCategoryMembers(mContext, categories.get(position)));

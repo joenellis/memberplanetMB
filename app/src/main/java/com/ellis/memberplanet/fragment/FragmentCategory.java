@@ -17,10 +17,9 @@ import com.ellis.memberplanet.api.Api;
 import com.ellis.memberplanet.api.ApiCall;
 import com.ellis.memberplanet.api.Result;
 import com.ellis.memberplanet.object.ObjectMembers;
-import com.ellis.memberplanet.object.ObjectYearGroup;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,7 +27,7 @@ import retrofit2.Response;
 
 public class FragmentCategory extends Fragment {
 
-    ArrayList<List<ObjectMembers>> categories = new ArrayList<java.util.List<ObjectMembers>>();
+    ArrayList<Map<String, ArrayList<ObjectMembers>>> categories = new ArrayList<Map<String, ArrayList<ObjectMembers>>>();
 
     RecyclerView.LayoutManager mLayoutManagerNew;
     RecyclerView mRecyclerView;
@@ -61,11 +60,11 @@ public class FragmentCategory extends Fragment {
                     if (!response.body().getError()) {
                         Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_LONG).show();
 
-                        if (response.body().getObjectMembers() != null) {
+                        if (response.body().getYearGroupMap() != null) {
 
-                            for (int i = 0; i < response.body().getObjectMembers().size()  ; i++) {
-                                categories.add(response.body().getObjectMembers());
-                            }
+                          for (int i = 0; i < response.body().getYearGroupMap().size()  ; i++) {
+                              categories.add(response.body().getYearGroupMap());
+                          }
 
                         }
 

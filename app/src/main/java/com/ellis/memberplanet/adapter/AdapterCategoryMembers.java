@@ -19,15 +19,16 @@ import com.ellis.memberplanet.object.ObjectYearGroup;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class AdapterCategoryMembers extends RecyclerView.Adapter<AdapterCategoryMembers.ProductHolder> {
 
     private Context mContext;
-    private List<ObjectMembers> yearGroups;
+    private Map<String, ArrayList<ObjectMembers>> objectMembers;
 
-    public AdapterCategoryMembers(Context mContext, List<ObjectMembers> products) {
+    public AdapterCategoryMembers(Context mContext, Map<String, ArrayList<ObjectMembers>> objectMembers) {
         this.mContext = mContext;
-        this.yearGroups = products;
+        this.objectMembers = objectMembers;
     }
 
     @Override
@@ -38,32 +39,32 @@ public class AdapterCategoryMembers extends RecyclerView.Adapter<AdapterCategory
     }
 
     @Override
-    public void onBindViewHolder(ProductHolder holder, int position) {
+    public void onBindViewHolder(ProductHolder holder, final int position) {
 
-       // final ObjectYearGroup yeargroups = yearGroups.get(position);
+//        ObjectMembers obMembers = objectMembers.get(position);
+//
+//        //String price = "GhC " + objectMembers.getPrice();
+//
+//        holder.productName.setText(obMembers.getFirstname());
+//        holder.productPrice.setText(obMembers.getEmail());
+       // Glide.with(this.mContext).load(ObjectMembers.getImage()).into(holder.productImage);
 
-//        String price = "GhC " + yeargroups.getPrice();
-//
-//        holder.productName.setText(yeargroups.getProductname());
-//        holder.productPrice.setText(price);
-//        Glide.with(this.mContext).load(yeargroups.getImage()).into(holder.productImage);
-//
-//
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                Intent intent = new Intent(mContext, ActivityMyProduct.class);
-//                intent.putExtra("ID", yeargroups.getProduct_id());
-//                mContext.startActivity(intent);
-//            }
-//        });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(mContext, ActivityMyProduct.class);
+               // intent.putExtra("ID", objectMembers.get(position).getUserid());
+                mContext.startActivity(intent);
+            }
+        });
 
     }
 
     @Override
     public int getItemCount() {
-        return yearGroups.size();
+        return objectMembers.size();
     }
 
 

@@ -11,6 +11,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Result {
     @SerializedName("error")
@@ -29,7 +30,7 @@ public class Result {
     private ArrayList<Trans> trans;
 
     @SerializedName("product")
-    private  ObjectProduct objectProductdetail;
+    private ObjectProduct objectProductdetail;
 
     @SerializedName("newsletters")
     private ArrayList<ObjectNewsletter> objectNewsletters;
@@ -41,35 +42,7 @@ public class Result {
     private ArrayList<ObjectUser> objectUsers;
 
     @SerializedName("yeargroup")
-    private List<ObjectMembers> objectMembers;
-
-    @SerializedName("tubers")
-    private ArrayList<ObjectProduct> objectProductTubers;
-
-    @SerializedName("fruits")
-    private ArrayList<ObjectProduct> objectProductFruits;
-
-    @SerializedName("vegetables")
-    private ArrayList<ObjectProduct> objectProductVegetables;
-
-    @SerializedName("grains")
-    private ArrayList<ObjectProduct> objectProductGrains;
-
-    @SerializedName("diaryfish")
-    private ArrayList<ObjectProduct> objectProductDairyFish;
-//
-//    @SerializedName("products")
-//    private ArrayList<ObjectProduct> objectProducts;
-//
-//    @SerializedName("products")
-//    private ArrayList<ObjectProduct> objectProducts;
-//
-//    @SerializedName("products")
-//    private ArrayList<ObjectProduct> objectProducts;
-//
-//    @SerializedName("products")
-//    private ArrayList<ObjectProduct> objectProducts;
-
+    private Map<String, ArrayList<ObjectMembers>> yearGroupMap;
 
     public Result(Boolean error, String message, ObjectUser objectUser) {
         this.error = error;
@@ -98,33 +71,8 @@ public class Result {
     public ObjectUser getObjectUser() {
         return objectUser;
     }
-
     public ObjectProduct getObjectProductdetail() {
         return objectProductdetail;
-    }
-
-//    public ArrayList<ObjectProduct> getObjectProducts() {
-//        return objectProducts;
-//    }
-
-    public ArrayList<ObjectProduct> getObjectProductTubers() {
-        return objectProductTubers;
-    }
-
-    public ArrayList<ObjectProduct> getObjectProductFruits() {
-        return objectProductFruits;
-    }
-
-    public ArrayList<ObjectProduct> getObjectProductVegetables() {
-        return objectProductVegetables;
-    }
-
-    public ArrayList<ObjectProduct> getObjectProductGrains() {
-        return objectProductGrains;
-    }
-
-    public ArrayList<ObjectProduct> getObjectProductDairyFish() {
-        return objectProductDairyFish;
     }
 
     public ArrayList<Trans> getTrans() {
@@ -147,9 +95,8 @@ public class Result {
         return qrocde;
     }
 
-
-    public List<ObjectMembers> getObjectMembers() {
-        return objectMembers;
+    public Map<String, ArrayList<ObjectMembers>> getYearGroupMap() {
+        return yearGroupMap;
     }
 
 }

@@ -1,6 +1,10 @@
 package com.ellis.memberplanet.object;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by joenellis on 18/05/2018.
@@ -8,13 +12,15 @@ import com.google.gson.annotations.SerializedName;
 
 public class ObjectYearGroup {
 
-    private ObjectMembers objectMembers;
+    @SerializedName("")
+    private ArrayList<ObjectMembers> objectMembers;
 
-    public ObjectYearGroup(ObjectMembers objectMembers) {
+    public ArrayList<ObjectMembers> getObjectMembers() {
+        return objectMembers;
+    }
+
+    public ObjectYearGroup(ArrayList<ObjectMembers> objectMembers) {
         this.objectMembers = objectMembers;
     }
 
-    public ObjectMembers getObjectMembers() {
-        return objectMembers;
-    }
 }
