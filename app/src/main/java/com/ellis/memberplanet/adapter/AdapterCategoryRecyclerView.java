@@ -2,6 +2,7 @@ package com.ellis.memberplanet.adapter;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,44 +16,48 @@ import android.widget.TextView;
 import com.ellis.memberplanet.R;
 import com.ellis.memberplanet.fragment.FragmentMore;
 import com.ellis.memberplanet.object.ObjectMembers;
-import com.ellis.memberplanet.object.ObjectProduct;
-import com.ellis.memberplanet.object.ObjectYearGroup;
-import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class AdapterCategoryRecyclerView extends RecyclerView.Adapter<AdapterCategoryRecyclerView.CategoryHolder> {
 
-    private ArrayList<Map<String, ArrayList<ObjectMembers>>> categories;
-    private Context mContext;
+    //    private ArrayList<Map<String, ArrayList<ObjectMembers>>> categories;
     private ArrayList mImage;
-   // private String[] category = {"Tubers","Fruits","Vegetables", "Grains", "Dairy/Fish"};
+    private LayoutInflater inflater;
+    private Map<String, ArrayList<ObjectMembers>> yearGroupMap;
+    // private String[] category = {"Tubers","Fruits","Vegetables", "Grains", "Dairy/Fish"};
+    private String[] yearGroups;
 
-
-    public AdapterCategoryRecyclerView(Context mContext, ArrayList<Map<String, ArrayList<ObjectMembers>>> categories) {
-        this.mContext = mContext;
-        this.categories = categories;
+    public AdapterCategoryRecyclerView(Map<String, ArrayList<ObjectMembers>> yearGroupMap) {
+        this.yearGroupMap = yearGroupMap;
+        if (yearGroupMap != null) {
+            yearGroups = new String[yearGroupMap.size()];
+            yearGroups = yearGroupMap.keySet().toArray(yearGroups);
+        }
     }
 
 
+    @NonNull
     @Override
-    public CategoryHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(mContext);
-        View view = inflater.inflate(R.layout.holder_category, null);
+    public CategoryHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        if (inflater == null)
+            inflater = LayoutInflater.from(parent.getContext());
+
+        View view = inflater.inflate(R.layout.holder_category, parent, false);
         return new CategoryHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(CategoryHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CategoryHolder holder, int position) {
 
-
-       // holder.mCategory.setText(categories.get());
+        final Context context = inflater.getContext();
+        String yearGroup = yearGroups[position];
+        // holder.mCategory.setText(categories.get());
         String browse = "Connect with recently joined alumni in ";//+ category[position].toLowerCase()+ " group ";
         holder.mSubtitle.setText(browse);
-        holder.mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
-        holder.mRecyclerView.setAdapter(new AdapterCategoryMembers(mContext, categories.get(position)));
+        holder.mRecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+        holder.mRecyclerView.setAdapter(new AdapterCategoryMembers(yearGroupMap.get(yearGroup)));
 
         final Bundle bundle = new Bundle();
         bundle.putString("Category", String.valueOf(position + 1));
@@ -63,18 +68,18 @@ public class AdapterCategoryRecyclerView extends RecyclerView.Adapter<AdapterCat
         holder.mMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((FragmentActivity)mContext).getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.homeLayout, fragment)
-                    .addToBackStack("Year Groups")
-                    .commit();
+                ((FragmentActivity) context).getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.homeLayout, fragment)
+                        .addToBackStack("Year Groups")
+                        .commit();
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return categories.size();
+        return yearGroupMap == null ? 0 : yearGroupMap.size();
     }
 
     class CategoryHolder extends RecyclerView.ViewHolder {

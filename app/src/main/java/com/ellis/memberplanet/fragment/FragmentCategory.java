@@ -60,16 +60,16 @@ public class FragmentCategory extends Fragment {
                     if (!response.body().getError()) {
                         Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_LONG).show();
 
-                        if (response.body().getYearGroupMap() != null) {
-
-                          for (int i = 0; i < response.body().getYearGroupMap().size()  ; i++) {
-                              categories.add(response.body().getYearGroupMap());
-                          }
-
-                        }
+//                        if (response.body().getYearGroupMap() != null) {
+//
+//                          for (int i = 0; i < response.body().getYearGroupMap().size()  ; i++) {
+//                              categories.add(response.body().getYearGroupMap());
+//                          }
+//
+//                        }
 
                         AdapterCategoryRecyclerView adapter;
-                        adapter = new AdapterCategoryRecyclerView(getContext(), categories);
+                        adapter = new AdapterCategoryRecyclerView(response.body().getYearGroupMap());
                         mRecyclerView.setAdapter(adapter);
 
                     } else {

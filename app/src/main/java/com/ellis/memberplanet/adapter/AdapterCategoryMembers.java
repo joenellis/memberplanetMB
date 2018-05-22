@@ -2,6 +2,7 @@ package com.ellis.memberplanet.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,37 +10,35 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ellis.memberplanet.R;
 import com.ellis.memberplanet.activity.ActivityMyProduct;
 import com.ellis.memberplanet.object.ObjectMembers;
-import com.ellis.memberplanet.object.ObjectProduct;
-import com.ellis.memberplanet.R;
-import com.bumptech.glide.Glide;
-import com.ellis.memberplanet.object.ObjectYearGroup;
-//import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+
+//import com.squareup.picasso.Picasso;
 
 public class AdapterCategoryMembers extends RecyclerView.Adapter<AdapterCategoryMembers.ProductHolder> {
 
-    private Context mContext;
-    private Map<String, ArrayList<ObjectMembers>> objectMembers;
+    private ArrayList<ObjectMembers> objectMembers;
+    private LayoutInflater inflater;
 
-    public AdapterCategoryMembers(Context mContext, Map<String, ArrayList<ObjectMembers>> objectMembers) {
-        this.mContext = mContext;
+    public AdapterCategoryMembers(ArrayList<ObjectMembers> objectMembers) {
         this.objectMembers = objectMembers;
     }
 
+    @NonNull
     @Override
-    public ProductHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(mContext);
-        View view = inflater.inflate(R.layout.holder_members, null);
+    public ProductHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        if (inflater == null)
+            inflater = LayoutInflater.from(parent.getContext());
+        View view = inflater.inflate(R.layout.holder_members, parent, false);
         return new ProductHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ProductHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull ProductHolder holder, final int position) {
+        final Context context = holder.itemView.getContext();
 
 //        ObjectMembers obMembers = objectMembers.get(position);
 //
@@ -47,16 +46,18 @@ public class AdapterCategoryMembers extends RecyclerView.Adapter<AdapterCategory
 //
 //        holder.productName.setText(obMembers.getFirstname());
 //        holder.productPrice.setText(obMembers.getEmail());
-       // Glide.with(this.mContext).load(ObjectMembers.getImage()).into(holder.productImage);
+        // Glide.with(this.mContext).load(ObjectMembers.getImage()).into(holder.productImage);
 
+        // TODO You get each member here
+        ObjectMembers member = this.objectMembers.get(position);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(mContext, ActivityMyProduct.class);
-               // intent.putExtra("ID", objectMembers.get(position).getUserid());
-                mContext.startActivity(intent);
+                Intent intent = new Intent(context, ActivityMyProduct.class);
+                // intent.putExtra("ID", objectMembers.get(position).getUserid());
+                context.startActivity(intent);
             }
         });
 
