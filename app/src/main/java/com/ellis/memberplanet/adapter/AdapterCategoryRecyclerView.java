@@ -23,6 +23,7 @@ import java.util.Map;
 public class AdapterCategoryRecyclerView extends RecyclerView.Adapter<AdapterCategoryRecyclerView.CategoryHolder> {
 
     //    private ArrayList<Map<String, ArrayList<ObjectMembers>>> categories;
+    //private Context mContext;
     private ArrayList mImage;
     private LayoutInflater inflater;
     private Map<String, ArrayList<ObjectMembers>> yearGroupMap;
@@ -30,6 +31,7 @@ public class AdapterCategoryRecyclerView extends RecyclerView.Adapter<AdapterCat
     private String[] yearGroups;
 
     public AdapterCategoryRecyclerView(Map<String, ArrayList<ObjectMembers>> yearGroupMap) {
+        //this.mContext = mContext;
         this.yearGroupMap = yearGroupMap;
         if (yearGroupMap != null) {
             yearGroups = new String[yearGroupMap.size()];
@@ -54,7 +56,7 @@ public class AdapterCategoryRecyclerView extends RecyclerView.Adapter<AdapterCat
         final Context context = inflater.getContext();
         String yearGroup = yearGroups[position];
         // holder.mCategory.setText(categories.get());
-        String browse = "Connect with recently joined alumni in ";//+ category[position].toLowerCase()+ " group ";
+        String browse = "Connect with recently joined alumni in " + yearGroup.toLowerCase()+ " group ";
         holder.mSubtitle.setText(browse);
         holder.mRecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         holder.mRecyclerView.setAdapter(new AdapterCategoryMembers(yearGroupMap.get(yearGroup)));

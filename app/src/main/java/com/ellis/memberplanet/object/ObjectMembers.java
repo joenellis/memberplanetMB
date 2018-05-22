@@ -23,9 +23,11 @@ public class ObjectMembers {
     @SerializedName("email")
     private String email;
 
-    @SerializedName("name")
-    private String name;
+    @SerializedName("image")
+    private String image;
 
+    @SerializedName("image")
+    private String name;
 
     public String getUserid() {
         return userid;
@@ -49,6 +51,10 @@ public class ObjectMembers {
 
     public String getName() {
         return name;
+    }
+
+    public String getImage() {
+        return image;
     }
 
 }
