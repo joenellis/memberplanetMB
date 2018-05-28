@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.ellis.memberplanet.R;
 import com.ellis.memberplanet.activity.ActivityMyProduct;
+import com.ellis.memberplanet.object.ObjectMembers;
 import com.ellis.memberplanet.object.ObjectUser;
 import com.bumptech.glide.Glide;
 
@@ -21,9 +22,9 @@ import java.util.List;
 public class AdapterMyMembers extends RecyclerView.Adapter<AdapterMyMembers.ProductHolder> {
 
     private Context mContext;
-    private List<ObjectUser> mMembers;
+    private ArrayList<ObjectMembers> mMembers;
 
-    public AdapterMyMembers(Context mContext, List<ObjectUser> mMembers) {
+    public AdapterMyMembers(Context mContext, ArrayList<ObjectMembers> mMembers) {
         this.mContext = mContext;
         this.mMembers = mMembers;
     }
@@ -39,7 +40,7 @@ public class AdapterMyMembers extends RecyclerView.Adapter<AdapterMyMembers.Prod
     @Override
     public void onBindViewHolder(ProductHolder holder, int position) {
 
-        final ObjectUser members = mMembers.get(position);
+        final ObjectMembers members = mMembers.get(position);
 
         holder.text1.setText(members.getFirstname() + " " + members.getLastname());
         holder.text2.setText(members.getProfession());
@@ -49,20 +50,20 @@ public class AdapterMyMembers extends RecyclerView.Adapter<AdapterMyMembers.Prod
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, ActivityMyProduct.class);
-                intent.putExtra("ID", members.getUser_id());
+                intent.putExtra("ID", members.getUserid());
                 mContext.startActivity(intent);
             }
         });
 
     }
 
-    public List<ObjectUser> filter(List<ObjectUser> products, String query) {
+    public ArrayList<ObjectMembers> filter(ArrayList<ObjectMembers> products, String query) {
         query = query.toLowerCase();
 
-        ArrayList<ObjectUser> filteredCompanyList = new ArrayList<>();
+        ArrayList<ObjectMembers> filteredCompanyList = new ArrayList<>();
 
-        for (ObjectUser item : products) {
-            final String productName = item.getFullname().toLowerCase();
+        for (ObjectMembers item : products) {
+            final String productName = item.getFirstname().toLowerCase();
             final String productPrice = item.getEmail().toLowerCase();
             if (productName.contains(query) || productPrice.contains(query)) {
                 filteredCompanyList.add(item);
@@ -71,33 +72,33 @@ public class AdapterMyMembers extends RecyclerView.Adapter<AdapterMyMembers.Prod
         return filteredCompanyList;
     }
 
-    public void animateTo(List<ObjectUser> models) {
+    public void animateTo(List<ObjectMembers> models) {
         applyAndAnimateRemovals(models);
         applyAndAnimateAdditions(models);
         applyAndAnimateMovedItems(models);
     }
 
-    private void applyAndAnimateRemovals(List<ObjectUser> newModels) {
+    private void applyAndAnimateRemovals(List<ObjectMembers> newModels) {
         for (int i = mMembers.size() - 1; i >= 0; i--) {
-            final ObjectUser model = mMembers.get(i);
+            final ObjectMembers model = mMembers.get(i);
             if (!newModels.contains(model)) {
                 removeItem(i);
             }
         }
     }
 
-    private void applyAndAnimateAdditions(List<ObjectUser> newModels) {
+    private void applyAndAnimateAdditions(List<ObjectMembers> newModels) {
         for (int i = 0, count = newModels.size(); i < count; i++) {
-            final ObjectUser model = newModels.get(i);
+            final ObjectMembers model = newModels.get(i);
             if (!mMembers.contains(model)) {
-                addItem(i, model);
+              //  addItem(i, model);
             }
         }
     }
 
-    private void applyAndAnimateMovedItems(List<ObjectUser> newModels) {
+    private void applyAndAnimateMovedItems(List<ObjectMembers> newModels) {
         for (int toPosition = newModels.size() - 1; toPosition >= 0; toPosition--) {
-            final ObjectUser model = newModels.get(toPosition);
+            final ObjectMembers model = newModels.get(toPosition);
             final int fromPosition = mMembers.indexOf(model);
             if (fromPosition >= 0 && fromPosition != toPosition) {
                 moveItem(fromPosition, toPosition);
@@ -105,19 +106,19 @@ public class AdapterMyMembers extends RecyclerView.Adapter<AdapterMyMembers.Prod
         }
     }
 
-    public ObjectUser removeItem(int position) {
-        final ObjectUser model = mMembers.remove(position);
+    public ObjectMembers removeItem(int position) {
+        final ObjectMembers model = mMembers.remove(position);
         notifyItemRemoved(position);
         return model;
     }
 
-    public void addItem(int position, ObjectUser model) {
+    public void addItem(int position, ObjectMembers model) {
         mMembers.add(position, model);
         notifyItemInserted(position);
     }
 
     public void moveItem(int fromPosition, int toPosition) {
-        final ObjectUser model = mMembers.remove(fromPosition);
+        final ObjectMembers model = mMembers.remove(fromPosition);
         mMembers.add(toPosition, model);
         notifyItemMoved(fromPosition, toPosition);
     }

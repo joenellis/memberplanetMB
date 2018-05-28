@@ -44,11 +44,11 @@ public interface ApiCall {
                                 @Query("attendance") String attend,
                                 @Query("mID") String mID);
 
-    @GET("getcategoryproducts.php")
-    Call<Result> productcaegory(@Query("categoryid") String categoryid);
+    @GET("getyeargroupmember.php")
+    Call<Result> yeargroupmembers(@Query("yeargroupname") String categoryid);
 
-    @GET("getproductdetail.php")
-    Call<Result> productdetails(@Query("productid") String productid);
+    @GET("getmembertdetail.php")
+    Call<Result> memberdetails(@Query("userid") String productid);
 
     @GET("mine.php")
     Call<Result> userPay(@Query("name") String fullname,

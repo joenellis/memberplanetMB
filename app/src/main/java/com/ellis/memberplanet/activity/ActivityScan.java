@@ -54,7 +54,7 @@ public class ActivityScan extends AppCompatActivity{
     //private String mEvent;
     private String mYearGroup;
 
-    final private String URL="http://28c67797.ngrok.io/memberplanet/APIs/geteventspinner.php";
+    final private String URL="http://bfb17038.ngrok.io/memberplanet/APIs/geteventspinner.php";
     private Spinner spinner;
     private  ArrayList<String> YearGroupName;
     Map<Integer, String> Group = new HashMap<>();

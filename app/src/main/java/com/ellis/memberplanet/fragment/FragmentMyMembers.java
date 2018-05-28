@@ -20,6 +20,7 @@ import com.ellis.memberplanet.api.Api;
 import com.ellis.memberplanet.api.ApiCall;
 import com.ellis.memberplanet.api.Result;
 import com.ellis.memberplanet.R;
+import com.ellis.memberplanet.object.ObjectMembers;
 import com.ellis.memberplanet.object.ObjectProduct;
 import com.ellis.memberplanet.object.ObjectUser;
 import com.ellis.memberplanet.session.SharedPrefManager;
@@ -36,7 +37,7 @@ public class FragmentMyMembers extends Fragment {
 
     RecyclerView.LayoutManager layoutManager;
     RecyclerView recyclerView;
-    private ArrayList<ObjectUser> members;
+    private ArrayList<ObjectMembers> members;
     private AdapterMyMembers adapter;
 
     @Override
@@ -67,7 +68,7 @@ public class FragmentMyMembers extends Fragment {
                 if (response.body() != null) {
                 if (!response.body().getError()) {
                     Toast.makeText(getActivity(),response.body().getMessage(), Toast.LENGTH_LONG).show() ;
-                    members = response.body().getObjectUsers();
+                    members = response.body().getObjectMembers();
                     adapter = new AdapterMyMembers(getContext(), members);
                     recyclerView.setAdapter(adapter);
 
@@ -106,7 +107,7 @@ public class FragmentMyMembers extends Fragment {
             @Override
             public boolean onQueryTextChange(String newText) {
 
-                final List<ObjectUser> filteredModelList = adapter.filter(members, newText);
+                final List<ObjectMembers> filteredModelList = adapter.filter(members, newText);
                 adapter.animateTo(filteredModelList);
                 recyclerView.scrollToPosition(0);
 

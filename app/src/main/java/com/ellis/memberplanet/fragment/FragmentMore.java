@@ -21,6 +21,7 @@ import com.ellis.memberplanet.api.Api;
 import com.ellis.memberplanet.api.ApiCall;
 import com.ellis.memberplanet.api.Result;
 import com.ellis.memberplanet.R;
+import com.ellis.memberplanet.object.ObjectMembers;
 import com.ellis.memberplanet.object.ObjectProduct;
 import com.ellis.memberplanet.object.ObjectUser;
 
@@ -35,7 +36,7 @@ public class FragmentMore extends Fragment {
 
     RecyclerView.LayoutManager layoutManager;
     RecyclerView mRecyclerViewMore;
-    private ArrayList<ObjectUser> products;
+    private ArrayList<ObjectMembers> products;
     private AdapterMyMembers adapter;
 
     public FragmentMore() {
@@ -63,7 +64,7 @@ public class FragmentMore extends Fragment {
 
         Api api = new Api();
         ApiCall service = api.getRetro().create(ApiCall.class);
-        Call<Result> call = service.productcaegory(args);
+        Call<Result> call = service.yeargroupmembers(args);
 
         call.enqueue(new Callback<Result>() {
             @Override
@@ -72,7 +73,7 @@ public class FragmentMore extends Fragment {
                 if (response.body() != null) {
                     if (!response.body().getError()) {
                         Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_LONG).show();
-                        products = response.body().getObjectUsers();
+                        products = response.body().getObjectMembers();
                         adapter = new AdapterMyMembers(getContext(), products);
                         mRecyclerViewMore.setAdapter(adapter);
 

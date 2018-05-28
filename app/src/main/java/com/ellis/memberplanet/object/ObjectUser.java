@@ -43,12 +43,11 @@ public class ObjectUser {
     @SerializedName("address")
     private String address;
 
-
     @SerializedName("image")
     private String image;
 
     @SerializedName("yeargroupname")
-    private String yeargroupname;
+    private String yeargroupname = null;
 
     public ObjectUser() {
     }

@@ -63,7 +63,7 @@ public class ActivityMyProduct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_product);
         initializeComponents();
-
+        
         mToolbar = findViewById(R.id.toolbar);
         mToolbar.setTitle("Member");
         setSupportActionBar(mToolbar);
@@ -85,7 +85,7 @@ public class ActivityMyProduct extends AppCompatActivity {
         /////test to call per product selected
         Api api = new Api();
         ApiCall service = api.getRetro().create(ApiCall.class);
-        Call<Result> call = service.productdetails(productId);
+        Call<Result> call = service.memberdetails(productId);
         call.enqueue(new Callback<Result>() {
             @Override
             public void onResponse(Call<Result> call, Response<Result> response) {

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.ellis.memberplanet.R;
 import com.ellis.memberplanet.activity.ActivityMyProduct;
 import com.ellis.memberplanet.object.ObjectMembers;
@@ -20,11 +21,13 @@ import java.util.ArrayList;
 
 public class AdapterCategoryMembers extends RecyclerView.Adapter<AdapterCategoryMembers.ProductHolder> {
 
+    private Context mContext;
     private ArrayList<ObjectMembers> objectMembers;
     private LayoutInflater inflater;
 
-    public AdapterCategoryMembers(ArrayList<ObjectMembers> objectMembers) {
+    public AdapterCategoryMembers(Context mContext, ArrayList<ObjectMembers> objectMembers) {
         this.objectMembers = objectMembers;
+        this.mContext = mContext;
     }
 
     @NonNull
@@ -40,23 +43,23 @@ public class AdapterCategoryMembers extends RecyclerView.Adapter<AdapterCategory
     public void onBindViewHolder(@NonNull ProductHolder holder, final int position) {
         final Context context = holder.itemView.getContext();
 
-//        ObjectMembers obMembers = objectMembers.get(position);
+        // TODO You get each member here
+        final ObjectMembers member = this.objectMembers.get(position);
 //
 //        //String price = "GhC " + objectMembers.getPrice();
 //
-//        holder.productName.setText(obMembers.getFirstname());
-//        holder.productPrice.setText(obMembers.getEmail());
-        // Glide.with(this.mContext).load(ObjectMembers.getImage()).into(holder.productImage);
+        holder.productName.setText(member.getFirstname());
+        holder.productPrice.setText(member.getEmail());
+        Glide.with(this.mContext).load(member.getImage()).into(holder.productImage);
 
-        // TODO You get each member here
-        ObjectMembers member = this.objectMembers.get(position);
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent intent = new Intent(context, ActivityMyProduct.class);
-                // intent.putExtra("ID", objectMembers.get(position).getUserid());
+                intent.putExtra("ID", member.getUserid());
                 context.startActivity(intent);
             }
         });

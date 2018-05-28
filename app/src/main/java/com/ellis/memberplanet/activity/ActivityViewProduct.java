@@ -34,26 +34,17 @@ import retrofit2.Response;
 
 public class ActivityViewProduct extends AppCompatActivity {
 
-
-    ArrayList<String> mImages;
-    View mBottomSheet;
     Toolbar mToolbar;
     TextView mPrice;
-    Button mMapButton;
-    Button mDescButton;
     TextView mCall;
     TextView mLocation;
-    VideoView videoview;
     TextView mFarmerName;
     TextView mProductName;
     TextView mDescription;
     ImageView mProductImage;
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager layoutManager;
-    BottomSheetBehavior mBottomSheetBehavior;
 
-    private String audio;
-    private String video;
     private String contact;
     private String productName;
     private String productImage;
@@ -68,10 +59,8 @@ public class ActivityViewProduct extends AppCompatActivity {
         setContentView(R.layout.activity_view_product);
 
         initializeComponents();
-        bottomSheetHack();
 
         setSupportActionBar(mToolbar);
-
 
         assert getSupportActionBar() != null;
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -86,14 +75,13 @@ public class ActivityViewProduct extends AppCompatActivity {
 
 
         final ProgressDialog progressDialog = new ProgressDialog(ActivityViewProduct.this);
-        progressDialog.setMessage("Loading Product Details...");
         progressDialog.show();
 
 
         /////test to call per product selected
         Api api = new Api();
         ApiCall service = api.getRetro().create(ApiCall.class);
-        Call<Result> call = service.productdetails(productId);
+        Call<Result> call = service.memberdetails(productId);
 
         call.enqueue(new Callback<Result>() {
 
@@ -106,23 +94,12 @@ public class ActivityViewProduct extends AppCompatActivity {
 
                     if (!response.body().getError()) {
 
-                        mImages = new ArrayList<>();
-                        mImages.add(response.body().getObjectProductdetail().getImage());
-                        mImages.add(response.body().getObjectProductdetail().getImage1());
-                        mImages.add(response.body().getObjectProductdetail().getImage2());
-                        mImages.add(response.body().getObjectProductdetail().getImage3());
-
-                        AdapterViewProductImages adapter = new AdapterViewProductImages(getApplicationContext(), mImages);
-                        mRecyclerView.setAdapter(adapter);
-
                         productName = response.body().getObjectProductdetail().getProductname();
                         productImage = response.body().getObjectProductdetail().getImage();
                         productDescription = response.body().getObjectProductdetail().getDescription();
                         farmerName = response.body().getObjectProductdetail().getFullname();
                         productPrice = response.body().getObjectProductdetail().getPrice();
                         productLocation = response.body().getObjectProductdetail().getLocation();
-                        audio = response.body().getObjectProductdetail().getAudio();
-                        video = response.body().getObjectProductdetail().getVideo();
                         contact = response.body().getObjectProductdetail().getContact();
 
                         mProductName.setText(productName);
@@ -132,28 +109,6 @@ public class ActivityViewProduct extends AppCompatActivity {
                         mPrice.setText(productPrice);
                         mLocation.setText(productLocation);
                         mCall.setText(contact);
-
-                        if (audio == null) {
-
-                            ViewGroup lay = findViewById(R.id.viewProduct_layAudioDescription);
-                            lay.setVisibility(View.GONE);
-
-                            View divider = findViewById(R.id.viewProduct_dividerBottomSheet);
-                            divider.setVisibility(View.GONE);
-
-                        }
-                        if (video == null) {
-
-                            ViewGroup lay = findViewById(R.id.viewProduct_layVideoDescription);
-                            lay.setVisibility(View.GONE);
-
-                        }
-                        if (video == null && audio == null) {
-
-                            Button button = findViewById(R.id.viewProduct_btnMoreDescription);
-                            button.setVisibility(View.GONE);
-
-                        }
 
                         Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
                     } else {
@@ -171,35 +126,17 @@ public class ActivityViewProduct extends AppCompatActivity {
 
     }
 
-    private void bottomSheetHack() {
-
-        mBottomSheet.post(new Runnable() {
-
-            @Override
-            public void run() {
-                mBottomSheetBehavior.setPeekHeight(0);
-            }
-
-        });
-
-    }
-
     private void initializeComponents() {
 
         mToolbar = findViewById(R.id.viewProduct_toolbar);
         mRecyclerView = findViewById(R.id.viewProduct_recyclerViewForImages);
         mDescription = findViewById(R.id.viewProduct_txtDescriptionText);
-        mDescButton = findViewById(R.id.viewProduct_btnMoreDescription);
         mProductImage = findViewById(R.id.viewProduct_imgProductImage);
         mProductName = findViewById(R.id.viewProduct_txtProductName);
-        mBottomSheet = findViewById(R.id.viewProduct_bottomSheet);
-        mBottomSheetBehavior = BottomSheetBehavior.from(mBottomSheet);
-        mMapButton = findViewById(R.id.viewProduct_btnViewOnMap);
         mFarmerName = findViewById(R.id.viewProduct_txtFarmName);
         mCall = findViewById(R.id.viewProduct_txtCall);
         mLocation = findViewById(R.id.viewProduct_txtLocation);
         mPrice = findViewById(R.id.viewProduct_txtPrice);
-       // videoview = findViewById(R.id.VideoView);
 
         layoutManager = new LinearLayoutManager(
                 this,
@@ -208,39 +145,6 @@ public class ActivityViewProduct extends AppCompatActivity {
         );
 
     }
-
-    public void onDescButtonClick(View view) {
-        if (mBottomSheetBehavior.getState() == BottomSheetBehavior.STATE_COLLAPSED) {
-            mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-        } else {
-            mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-        }
-    }
-
-    public void onMapButtonClick(View view) {
-
-        String bn = "geo:0,0?q=";
-
-        Uri gmmIntentUri = Uri.parse(bn + productLocation);
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-        mapIntent.setPackage("com.google.android.apps.maps");
-
-        if (mapIntent.resolveActivity(getPackageManager()) != null) {
-
-            startActivity(mapIntent);
-
-        } else {
-
-            Snackbar.make(
-                    findViewById(R.id.viewProduct_layRoot),
-                    "You Do Have Google Maps Installed!",
-                    Snackbar.LENGTH_LONG
-            ).show();
-
-        }
-
-    }
-
 
 
     public void onCallButtonClick(View view) {
@@ -252,15 +156,6 @@ public class ActivityViewProduct extends AppCompatActivity {
             startActivity(intent);
 
         }
-
-    }
-
-    public void onPlayAudioClick(View view) {
-
-        Intent intent = new Intent();
-        intent.setAction(android.content.Intent.ACTION_VIEW);
-        intent.setDataAndType(Uri.parse(audio), "audio/*");
-        startActivity(intent);
 
     }
 

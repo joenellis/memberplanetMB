@@ -39,7 +39,7 @@ public class Result {
     private ArrayList<ObjectEvent> objectEvents;
 
     @SerializedName("members")
-    private ArrayList<ObjectUser> objectUsers;
+    private ArrayList<ObjectMembers> objectMembers;
 
     @SerializedName("yeargroup")
     private Map<String, ArrayList<ObjectMembers>> yearGroupMap;
@@ -87,12 +87,12 @@ public class Result {
     return objectEvents;
 }
 
-    public ArrayList<ObjectUser> getObjectUsers() {
-        return objectUsers;
-    }
-
     public String getQrocde() {
         return qrocde;
+    }
+
+    public ArrayList<ObjectMembers> getObjectMembers() {
+        return objectMembers;
     }
 
     public Map<String, ArrayList<ObjectMembers>> getYearGroupMap() {

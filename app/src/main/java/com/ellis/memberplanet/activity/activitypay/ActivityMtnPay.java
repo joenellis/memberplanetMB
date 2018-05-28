@@ -57,7 +57,7 @@ public class ActivityMtnPay extends AppCompatActivity implements View.OnClickLis
     //private String mEvent;
     private String mYearGroup;
 
-    final private String URL="http://28c67797.ngrok.io/memberplanet/APIs/getaccountspinner.php";
+    final private String URL="http://bfb17038.ngrok.io/memberplanet/APIs/getaccountspinner.php";
     private Spinner spinner;
     private  ArrayList<String> YearGroupName;
     Map<Integer, String> Group = new HashMap<>();

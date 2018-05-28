@@ -23,14 +23,15 @@ import java.util.Map;
 public class AdapterCategoryRecyclerView extends RecyclerView.Adapter<AdapterCategoryRecyclerView.CategoryHolder> {
 
     //    private ArrayList<Map<String, ArrayList<ObjectMembers>>> categories;
+    private Context mContext;
     private ArrayList mImage;
     private LayoutInflater inflater;
     private Map<String, ArrayList<ObjectMembers>> yearGroupMap;
-    // private String[] category = {"Tubers","Fruits","Vegetables", "Grains", "Dairy/Fish"};
     private String[] yearGroups;
 
-    public AdapterCategoryRecyclerView(Map<String, ArrayList<ObjectMembers>> yearGroupMap) {
+    public AdapterCategoryRecyclerView(Context mContext, Map<String, ArrayList<ObjectMembers>> yearGroupMap) {
         this.yearGroupMap = yearGroupMap;
+        this.mContext = mContext;
         if (yearGroupMap != null) {
             yearGroups = new String[yearGroupMap.size()];
             yearGroups = yearGroupMap.keySet().toArray(yearGroups);
@@ -54,13 +55,13 @@ public class AdapterCategoryRecyclerView extends RecyclerView.Adapter<AdapterCat
         final Context context = inflater.getContext();
         String yearGroup = yearGroups[position];
         // holder.mCategory.setText(categories.get());
-        String browse = "Connect with recently joined alumni in ";//+ category[position].toLowerCase()+ " group ";
+        String browse = "Connect with recently joined alumni in "+ yearGroup.toLowerCase()+ " group ";
         holder.mSubtitle.setText(browse);
         holder.mRecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
-        holder.mRecyclerView.setAdapter(new AdapterCategoryMembers(yearGroupMap.get(yearGroup)));
+        holder.mRecyclerView.setAdapter(new AdapterCategoryMembers(mContext,yearGroupMap.get(yearGroup)));
 
         final Bundle bundle = new Bundle();
-        bundle.putString("Category", String.valueOf(position + 1));
+        bundle.putString("Category", yearGroup);
 
         final Fragment fragment = new FragmentMore();
         fragment.setArguments(bundle);
@@ -68,7 +69,7 @@ public class AdapterCategoryRecyclerView extends RecyclerView.Adapter<AdapterCat
         holder.mMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((FragmentActivity) context).getSupportFragmentManager()
+                ((FragmentActivity) mContext).getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.homeLayout, fragment)
                         .addToBackStack("Year Groups")
