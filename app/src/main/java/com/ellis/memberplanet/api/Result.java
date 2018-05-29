@@ -29,9 +29,6 @@ public class Result {
     @SerializedName("transaction")
     private ArrayList<Trans> trans;
 
-    @SerializedName("product")
-    private ObjectProduct objectProductdetail;
-
     @SerializedName("newsletters")
     private ArrayList<ObjectNewsletter> objectNewsletters;
 
@@ -40,6 +37,9 @@ public class Result {
 
     @SerializedName("members")
     private ArrayList<ObjectMembers> objectMembers;
+
+   @SerializedName("member")
+    private ObjectMembers objectMember;
 
     @SerializedName("yeargroup")
     private Map<String, ArrayList<ObjectMembers>> yearGroupMap;
@@ -71,8 +71,9 @@ public class Result {
     public ObjectUser getObjectUser() {
         return objectUser;
     }
-    public ObjectProduct getObjectProductdetail() {
-        return objectProductdetail;
+
+    public ObjectMembers getObjectMember() {
+        return objectMember;
     }
 
     public ArrayList<Trans> getTrans() {

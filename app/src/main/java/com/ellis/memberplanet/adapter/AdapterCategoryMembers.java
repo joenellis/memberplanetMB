@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.ellis.memberplanet.R;
-import com.ellis.memberplanet.activity.ActivityMyProduct;
+import com.ellis.memberplanet.activity.ActivityViewMember;
 import com.ellis.memberplanet.object.ObjectMembers;
 
 import java.util.ArrayList;
@@ -58,7 +58,7 @@ public class AdapterCategoryMembers extends RecyclerView.Adapter<AdapterCategory
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(context, ActivityMyProduct.class);
+                Intent intent = new Intent(context, ActivityViewMember.class);
                 intent.putExtra("ID", member.getUserid());
                 context.startActivity(intent);
             }

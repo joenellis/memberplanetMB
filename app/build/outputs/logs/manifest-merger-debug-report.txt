@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:2:1-149:12
-INJECTED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:2:1-149:12
-INJECTED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:2:1-149:12
-INJECTED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:2:1-149:12
+ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:2:1-142:12
+INJECTED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:2:1-142:12
+INJECTED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:2:1-142:12
+INJECTED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:2:1-142:12
 MERGED from [com.google.firebase:firebase-core:11.4.0] /Users/joenellis/.gradle/caches/transforms-1/files-1.1/firebase-core-11.4.0.aar/2d50b67ec67f8d11e182aee1efd02aec/AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.firebase:firebase-messaging:11.4.0] /Users/joenellis/.gradle/caches/transforms-1/files-1.1/firebase-messaging-11.4.0.aar/5b5dfab4a307d8db86a047e3f39e4411/AndroidManifest.xml:16:1-30:12
 MERGED from [com.journeyapps:zxing-android-embedded:3.5.0] /Users/joenellis/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/a543b36bac37f65d3955cadcd941895f/AndroidManifest.xml:17:1-55:12
@@ -35,20 +35,20 @@ MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/joenellis/.gradle/cach
 MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/joenellis/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/8785a20413cb3494420cd9603931e9eb/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.0] /Users/joenellis/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/b68551b3011c1e3b16f2da9c83dd989f/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/joenellis/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/fe901f24d3583a8202cfacf1d5aab95c/AndroidManifest.xml:17:1-22:12
-INJECTED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:2:1-149:12
-INJECTED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:2:1-149:12
-INJECTED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:2:1-149:12
+INJECTED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:2:1-142:12
+INJECTED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:2:1-142:12
+INJECTED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:2:1-142:12
 	package
 		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:3:5-37
 		INJECTED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml
-		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:2:1-149:12
+		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:2:1-142:12
 		INJECTED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml
-		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:2:1-149:12
+		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:2:1-142:12
 		INJECTED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:2:11-69
@@ -101,7 +101,7 @@ ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.
 	android:name
 		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:15:22-76
 application
-ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:17:5-147:19
+ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:17:5-140:19
 MERGED from [com.google.firebase:firebase-core:11.4.0] /Users/joenellis/.gradle/caches/transforms-1/files-1.1/firebase-core-11.4.0.aar/2d50b67ec67f8d11e182aee1efd02aec/AndroidManifest.xml:5:5-20
 MERGED from [com.google.firebase:firebase-core:11.4.0] /Users/joenellis/.gradle/caches/transforms-1/files-1.1/firebase-core-11.4.0.aar/2d50b67ec67f8d11e182aee1efd02aec/AndroidManifest.xml:5:5-20
 MERGED from [com.google.firebase:firebase-messaging:11.4.0] /Users/joenellis/.gradle/caches/transforms-1/files-1.1/firebase-messaging-11.4.0.aar/5b5dfab4a307d8db86a047e3f39e4411/AndroidManifest.xml:19:5-29:19
@@ -224,68 +224,62 @@ ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.
 		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:76:13-86
 	android:name
 		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:75:13-87
-activity#com.ellis.memberplanet.activity.ActivityViewProduct
+activity#com.ellis.memberplanet.activity.ActivityScan
 ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:81:9-87:20
 	android:parentActivityName
 		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:83:13-86
 	android:name
-		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:82:13-79
-activity#com.ellis.memberplanet.activity.ActivityScan
+		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:82:13-72
+activity#com.ellis.memberplanet.activity.ActivityLogin
 ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:88:9-94:20
 	android:parentActivityName
 		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:90:13-86
 	android:name
-		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:89:13-72
-activity#com.ellis.memberplanet.activity.ActivityLogin
+		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:89:13-73
+activity#com.ellis.memberplanet.activity.ActivityMyAccount
 ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:95:9-101:20
 	android:parentActivityName
 		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:97:13-86
 	android:name
-		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:96:13-73
-activity#com.ellis.memberplanet.activity.ActivityMyAccount
+		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:96:13-77
+activity#com.ellis.memberplanet.activity.ActivitySignUp
 ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:102:9-108:20
 	android:parentActivityName
 		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:104:13-86
 	android:name
-		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:103:13-77
-activity#com.ellis.memberplanet.activity.ActivitySignUp
+		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:103:13-74
+activity#com.ellis.memberplanet.activity.ActivityEditProfile
 ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:109:9-115:20
 	android:parentActivityName
 		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:111:13-86
 	android:name
-		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:110:13-74
-activity#com.ellis.memberplanet.activity.ActivityEditProfile
+		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:110:13-79
+activity#com.ellis.memberplanet.activity.ActivityEditProduct
 ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:116:9-122:20
 	android:parentActivityName
-		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:118:13-86
+		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:118:13-91
 	android:name
 		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:117:13-79
-activity#com.ellis.memberplanet.activity.ActivityEditProduct
+activity#com.ellis.memberplanet.activity.ActivityViewMember
 ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:123:9-129:20
 	android:parentActivityName
-		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:125:13-91
+		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:125:13-86
 	android:name
-		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:124:13-79
-activity#com.ellis.memberplanet.activity.ActivityMyProduct
-ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:130:9-136:20
-	android:parentActivityName
-		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:132:13-86
-	android:name
-		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:131:13-77
+		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:124:13-78
 activity#com.ellis.memberplanet.WebActivity
-ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:137:9-71
+ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:130:9-71
 	android:name
-		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:137:19-68
+		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:130:19-68
 activity#com.ellis.memberplanet.activity.ActivityForgotPassword
-ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:138:9-91
+ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:131:9-91
 	android:name
-		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:138:19-88
+		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:131:19-88
 activity#com.ellis.memberplanet.activity.ActivityEditPassword
-ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:140:9-146:20
+ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:133:9-139:20
 	android:parentActivityName
-		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:142:13-93
+		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:135:13-93
 	android:name
-		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:141:13-80
+		ADDED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml:134:13-80
 uses-sdk
 INJECTED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/joenellis/Desktop/memberplanetMB/app/src/main/AndroidManifest.xml

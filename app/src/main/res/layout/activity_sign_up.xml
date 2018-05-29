@@ -271,12 +271,13 @@ android:layout_height="match_parent">
 
 
             <TextView
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Select Year Group"/>
-        <Spinner
+                android:text="Select Year Group"
+                android:paddingTop="10dp"
+                android:textSize="15dp"/>
 
+        <Spinner
             android:id="@+id/country_Name"
             style="@style/Base.Widget.AppCompat.Spinner"
             android:layout_width="match_parent"

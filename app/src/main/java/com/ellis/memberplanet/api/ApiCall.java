@@ -47,8 +47,8 @@ public interface ApiCall {
     @GET("getyeargroupmember.php")
     Call<Result> yeargroupmembers(@Query("yeargroupname") String categoryid);
 
-    @GET("getmembertdetail.php")
-    Call<Result> memberdetails(@Query("userid") String productid);
+    @GET("getmemberdetail.php")
+    Call<Result> memberdetails(@Query("memberid") String memberid);
 
     @GET("mine.php")
     Call<Result> userPay(@Query("name") String fullname,

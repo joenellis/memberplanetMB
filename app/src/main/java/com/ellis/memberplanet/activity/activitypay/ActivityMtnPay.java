@@ -88,7 +88,6 @@ public class ActivityMtnPay extends AppCompatActivity implements View.OnClickLis
         YearGroupName=new ArrayList<>();
         loadSpinnerData(URL);
 
-
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {

@@ -10,9 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ellis.memberplanet.R;
-import com.ellis.memberplanet.activity.ActivityMyProduct;
+import com.ellis.memberplanet.activity.ActivityViewMember;
 import com.ellis.memberplanet.object.ObjectMembers;
-import com.ellis.memberplanet.object.ObjectUser;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -49,7 +48,7 @@ public class AdapterMyMembers extends RecyclerView.Adapter<AdapterMyMembers.Prod
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, ActivityMyProduct.class);
+                Intent intent = new Intent(mContext, ActivityViewMember.class);
                 intent.putExtra("ID", members.getUserid());
                 mContext.startActivity(intent);
             }
@@ -63,8 +62,8 @@ public class AdapterMyMembers extends RecyclerView.Adapter<AdapterMyMembers.Prod
         ArrayList<ObjectMembers> filteredCompanyList = new ArrayList<>();
 
         for (ObjectMembers item : products) {
-            final String productName = item.getFirstname().toLowerCase();
-            final String productPrice = item.getEmail().toLowerCase();
+            final String productName = item.getFullname();
+            final String productPrice = item.getProfession();
             if (productName.contains(query) || productPrice.contains(query)) {
                 filteredCompanyList.add(item);
             }

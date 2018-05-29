@@ -79,13 +79,6 @@
                 android:value="com.ellis.memberplanet.activity.ActivityHome" />
         </activity>
         <activity
-            android:name="com.ellis.memberplanet.activity.ActivityViewProduct"
-            android:parentActivityName="com.ellis.memberplanet.activity.ActivityHome">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.ellis.memberplanet.activity.ActivityHome" />
-        </activity>
-        <activity
             android:name="com.ellis.memberplanet.activity.ActivityScan"
             android:parentActivityName="com.ellis.memberplanet.activity.ActivityHome">
             <meta-data
@@ -128,7 +121,7 @@
                 android:value="com.ellis.memberplanet.activity.ActivityMyAccount" />
         </activity>
         <activity
-            android:name="com.ellis.memberplanet.activity.ActivityMyProduct"
+            android:name="com.ellis.memberplanet.activity.ActivityViewMember"
             android:parentActivityName="com.ellis.memberplanet.activity.ActivityHome">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

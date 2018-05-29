@@ -2,6 +2,8 @@ package com.ellis.memberplanet.object;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.sql.Struct;
+
 /**
  * Created by joenellis on 18/05/2018.
  */
@@ -19,6 +21,12 @@ public class ObjectMembers {
 
     @SerializedName("lastname")
     private String lastname;
+
+    @SerializedName("name")
+    private String yeargroupname;
+
+    @SerializedName("fullname")
+    private String fullname;
 
     @SerializedName("password")
     private String password;
@@ -44,14 +52,8 @@ public class ObjectMembers {
     @SerializedName("contact")
     private String contact;
 
-    @SerializedName("Token")
-    private Object token;
-
-    @SerializedName("client_reference")
-    private Object clientReference;
-
-    @SerializedName("channel")
-    private Object channel;
+    @SerializedName("year")
+    private String year;
 
     @SerializedName("image")
     private String image;
@@ -103,18 +105,6 @@ public class ObjectMembers {
         return contact;
     }
 
-    public Object getToken() {
-        return token;
-    }
-
-    public Object getClientReference() {
-        return clientReference;
-    }
-
-    public Object getChannel() {
-        return channel;
-    }
-
     public String getImage() {
         return image;
     }
@@ -127,4 +117,15 @@ public class ObjectMembers {
         return userid;
     }
 
+    public String getFullname() {
+        return fullname;
+    }
+
+    public String getYeargroupname() {
+        return yeargroupname;
+    }
+
+    public String getYear() {
+        return year;
+    }
 }

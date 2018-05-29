@@ -21,7 +21,6 @@
             android:layout_marginBottom="5dp"
             android:layout_toLeftOf="@+id/holderCategory_btnMore"
             android:layout_toStartOf="@+id/holderCategory_btnMore"
-            android:text="@string/homeNewHeading"
             android:textStyle="bold" />
 
         <Button
