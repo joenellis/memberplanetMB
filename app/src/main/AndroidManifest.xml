@@ -114,13 +114,6 @@
                 android:value="com.ellis.memberplanet.activity.ActivityHome" />
         </activity>
         <activity
-            android:name="com.ellis.memberplanet.activity.ActivityEditProduct"
-            android:parentActivityName="com.ellis.memberplanet.activity.ActivityMyAccount">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.ellis.memberplanet.activity.ActivityMyAccount" />
-        </activity>
-        <activity
             android:name="com.ellis.memberplanet.activity.ActivityViewMember"
             android:parentActivityName="com.ellis.memberplanet.activity.ActivityHome">
             <meta-data

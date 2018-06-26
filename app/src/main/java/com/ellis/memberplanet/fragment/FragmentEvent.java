@@ -17,6 +17,7 @@ import com.ellis.memberplanet.api.ApiCall;
 import com.ellis.memberplanet.api.Result;
 import com.ellis.memberplanet.object.ObjectEvent;
 import com.ellis.memberplanet.object.ObjectProduct;
+import com.ellis.memberplanet.session.SharedPrefManager;
 
 import java.util.ArrayList;
 
@@ -52,9 +53,12 @@ public class FragmentEvent extends Fragment {
         recyclerViewEvents.setLayoutManager(layoutManager);
         recyclerViewEvents.setHasFixedSize(true);
 
+
+        String yeargroupid = SharedPrefManager.getInstance(getContext()).getobjectUser().getYeargroupid();
+
         Api api = new Api();
         ApiCall service = api.getRetro().create(ApiCall.class);
-        Call<Result> call = service.event();
+        Call<Result> call = service.event(yeargroupid);
 
         call.enqueue(new Callback<Result>() {
             @Override

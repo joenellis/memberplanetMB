@@ -84,7 +84,7 @@ public class ActivityHome extends AppCompatActivity {
 
         } else {
 
-            mNavigationView.inflateMenu(R.menu.logged_out_nav_drawer_menu);
+            startActivity(new Intent(getApplicationContext(), ActivityLogin.class));
 
         }
 

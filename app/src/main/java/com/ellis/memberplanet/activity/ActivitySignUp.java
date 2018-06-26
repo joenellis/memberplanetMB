@@ -78,7 +78,7 @@ public class ActivitySignUp extends AppCompatActivity implements View.OnClickLis
 
 
     private Spinner spinner;
-    private String URL="http://bfb17038.ngrok.io/memberplanet/APIs/getyeargroupspinner.php";
+    private String target="getyeargroupspinner.php";
     private  ArrayList<String> YearGroupName;
     Map<Integer, String> Group = new HashMap<>();
 
@@ -93,6 +93,10 @@ public class ActivitySignUp extends AppCompatActivity implements View.OnClickLis
 
         ////Spinner foryear groups
         YearGroupName=new ArrayList<>();
+
+
+        Api api = new Api();
+        String URL = String.valueOf(api.getRetro().baseUrl())+target;
         loadSpinnerData(URL);
 
 
@@ -106,7 +110,7 @@ public class ActivitySignUp extends AppCompatActivity implements View.OnClickLis
                     Integer YearGroupId = entry.getKey();
                     String value = entry.getValue();
                     if (s.matches(value)){
-                        Toast.makeText(getApplicationContext(), ""+YearGroupId, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), ""+YearGroupId, Toast.LENGTH_SHORT).show();
                         mID = String.valueOf(YearGroupId);
                     }
                 }

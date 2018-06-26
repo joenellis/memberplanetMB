@@ -56,7 +56,7 @@ public class ActivityAirtelPay extends AppCompatActivity implements View.OnClick
     //private String mEvent;
     private String mYearGroup;
 
-    final private String URL="http://28c67797.ngrok.io/memberplanet/APIs/getaccountspinner.php";
+    final private String target="getaccountspinner.php";
     private Spinner spinner;
     private  ArrayList<String> YearGroupName;
     Map<Integer, String> Group = new HashMap<>();
@@ -83,6 +83,9 @@ public class ActivityAirtelPay extends AppCompatActivity implements View.OnClick
 
         buttonpay.setOnClickListener(this);
 
+
+        Api api = new Api();
+        String URL = String.valueOf(api.getRetro().baseUrl())+target;
         ////Spinner foryear groups
         YearGroupName=new ArrayList<>();
         loadSpinnerData(URL);

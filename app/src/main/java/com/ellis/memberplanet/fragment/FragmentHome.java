@@ -17,6 +17,7 @@ import com.ellis.memberplanet.api.Result;
 import com.ellis.memberplanet.R;
 import com.ellis.memberplanet.object.ObjectNewsletter;
 import com.ellis.memberplanet.object.ObjectProduct;
+import com.ellis.memberplanet.session.SharedPrefManager;
 
 import java.util.ArrayList;
 
@@ -34,7 +35,7 @@ public class FragmentHome extends Fragment {
 
 
     private AdapterNewsletter adapter;
-    private ArrayList<ObjectNewsletter> products;
+    private ArrayList<ObjectNewsletter> newsletters;
 
     public FragmentHome() {
     }
@@ -55,9 +56,10 @@ public class FragmentHome extends Fragment {
         recyclerViewHome.setLayoutManager(layoutManager);
         recyclerViewHome.setHasFixedSize(true);
 
+        String yeargroupid = SharedPrefManager.getInstance(getContext()).getobjectUser().getYeargroupid();
         Api api = new Api();
         ApiCall service = api.getRetro().create(ApiCall.class);
-        Call<Result> call = service.newsletter();
+        Call<Result> call = service.newsletter(yeargroupid);
 
         call.enqueue(new Callback<Result>() {
             @Override
@@ -66,8 +68,8 @@ public class FragmentHome extends Fragment {
                 if (response.body() != null) {
                     if (!response.body().getError()) {
 //                      Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_LONG).show();
-                        products = response.body().getObjectNewsletters();
-                        adapter = new AdapterNewsletter(getContext(), products);
+                        newsletters = response.body().getObjectNewsletters();
+                        adapter = new AdapterNewsletter(getContext(), newsletters);
                         recyclerViewHome.setAdapter(adapter);
 
                     } else {

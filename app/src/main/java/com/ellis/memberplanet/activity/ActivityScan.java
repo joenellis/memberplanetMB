@@ -54,7 +54,7 @@ public class ActivityScan extends AppCompatActivity{
     //private String mEvent;
     private String mYearGroup;
 
-    final private String URL="http://bfb17038.ngrok.io/memberplanet/APIs/geteventspinner.php";
+    final private String target="geteventspinner.php";
     private Spinner spinner;
     private  ArrayList<String> YearGroupName;
     Map<Integer, String> Group = new HashMap<>();
@@ -83,6 +83,9 @@ public class ActivityScan extends AppCompatActivity{
 //        ////Spinner foryear groups
 //        EventName =new ArrayList<>();
 //        loadSpinnerData(URL);
+
+        Api api = new Api();
+        String URL = String.valueOf(api.getRetro().baseUrl())+target;
 
         buttonScan = findViewById(R.id.buttonScan);
 
@@ -124,7 +127,7 @@ public class ActivityScan extends AppCompatActivity{
                     Integer YearGroupId = entry.getKey();
                     String value = entry.getValue();
                     if (s.matches(value)){
-                        Toast.makeText(getApplicationContext(), ""+YearGroupId, Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(getApplicationContext(), ""+YearGroupId, Toast.LENGTH_SHORT).show();
                         mID = String.valueOf(YearGroupId);
                         getQrCode();
                     }

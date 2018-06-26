@@ -88,6 +88,7 @@ public class ActivityMyAccount extends AppCompatActivity {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Fetching Details...");
         progressDialog.show();
+        progressDialog.setCancelable(false);
 
 
         String userid = SharedPrefManager.getInstance(getApplicationContext()).getobjectUser().getUser_id();

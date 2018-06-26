@@ -57,7 +57,7 @@ public class ActivityMtnPay extends AppCompatActivity implements View.OnClickLis
     //private String mEvent;
     private String mYearGroup;
 
-    final private String URL="http://bfb17038.ngrok.io/memberplanet/APIs/getaccountspinner.php";
+    final private String target="getaccountspinner.php";
     private Spinner spinner;
     private  ArrayList<String> YearGroupName;
     Map<Integer, String> Group = new HashMap<>();
@@ -84,6 +84,9 @@ public class ActivityMtnPay extends AppCompatActivity implements View.OnClickLis
 
         buttonpay.setOnClickListener(this);
 
+
+        Api api = new Api();
+        String URL = String.valueOf(api.getRetro().baseUrl())+target;
         ////Spinner foryear groups
         YearGroupName=new ArrayList<>();
         loadSpinnerData(URL);

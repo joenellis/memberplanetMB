@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import com.ellis.memberplanet.R;
 import com.ellis.memberplanet.activity.ActivityAddProduct;
-import com.ellis.memberplanet.activity.ActivityEditProduct;
 
 public class FragmentDialogLocation extends DialogFragment {
 
@@ -50,14 +49,14 @@ public class FragmentDialogLocation extends DialogFragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                ActivityAddProduct.location = adapterView.getItemAtPosition(i).toString();
-                if (ActivityEditProduct.isRequestingLocation)
-                ActivityEditProduct.location = adapterView.getItemAtPosition(i).toString();
-
-                Toast.makeText(
-                        getActivity().getApplicationContext(),
-                        adapterView.getItemAtPosition(i).toString(),
-                        Toast.LENGTH_LONG).show();
+//                ActivityAddProduct.location = adapterView.getItemAtPosition(i).toString();
+//                if (ActivityEditProduct.isRequestingLocation)
+//                ActivityEditProduct.location = adapterView.getItemAtPosition(i).toString();
+//
+//                Toast.makeText(
+//                        getActivity().getApplicationContext(),
+//                        adapterView.getItemAtPosition(i).toString(),
+//                        Toast.LENGTH_LONG).show();
 
                 dismiss();
             }

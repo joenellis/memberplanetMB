@@ -25,10 +25,10 @@ public interface ApiCall {
     Call<Result> products(@Query("key") String key) ;
 
     @GET("getnewsletter.php")
-    Call<Result> newsletter();
+    Call<Result> newsletter(@Query("yeargroupid") String yeargroupid);
 
     @GET("getevent.php")
-    Call<Result> event();
+    Call<Result> event(@Query("yeargroupid") String yeargroupid);
 
     @GET("getmymembers.php")
     Call<Result> mymembers(@Query("yeargroupid") String yeargroupid);
