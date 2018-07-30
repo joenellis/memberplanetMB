@@ -11,7 +11,7 @@ public class Api {
 
         public Retrofit getRetro() {
 
-            String url = "http://e2aea4eb.ngrok.io/memberplanet/APIs/";
+            String url = "http://memberplanet.leefranco.com/memberplanet/APIs/";
             if (retro==null) {
                 retro = new Retrofit.Builder()
                         .baseUrl(url)

@@ -29,11 +29,11 @@
 
            <ImageView
            android:id="@+id/appIcon"
-               android:paddingTop="80dp"
+               android:paddingTop="30dp"
+               android:paddingBottom="10dp"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-               android:src="@drawable/logo"
-
+               android:src="@drawable/logo5"
+            android:layout_height="200dp"
             tools:ignore="ContentDescription" />
 
             <LinearLayout

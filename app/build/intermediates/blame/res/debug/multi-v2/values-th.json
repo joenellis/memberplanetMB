@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/joenellis/Desktop/memberplanetMB/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-th/values-th.xml",
+            "outputFile": "/Users/joenellis/Documents/AndroidStudioProjects/memberplanetMB/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-th/values-th.xml",
             "map": [
                 {
                     "source": "/Users/joenellis/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.5.0.aar/a543b36bac37f65d3955cadcd941895f/res/values-th/values-th.xml",

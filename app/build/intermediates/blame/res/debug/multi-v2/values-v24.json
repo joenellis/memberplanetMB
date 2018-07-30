@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/joenellis/Desktop/memberplanetMB/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v24/values-v24.xml",
+            "outputFile": "/Users/joenellis/Documents/AndroidStudioProjects/memberplanetMB/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v24/values-v24.xml",
             "map": [
                 {
                     "source": "/Users/joenellis/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/0547bc99564389d8025e8ed5748feae5/res/values-v24/values-v24.xml",

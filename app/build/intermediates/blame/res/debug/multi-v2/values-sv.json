@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/joenellis/Desktop/memberplanetMB/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sv/values-sv.xml",
+            "outputFile": "/Users/joenellis/Documents/AndroidStudioProjects/memberplanetMB/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sv/values-sv.xml",
             "map": [
                 {
                     "source": "/Users/joenellis/.gradle/caches/transforms-1/files-1.1/play-services-basement-11.4.0.aar/7d1152f90a2192e1a3db9377b49f36c2/res/values-sv/values.xml",

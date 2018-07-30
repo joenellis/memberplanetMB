@@ -60,15 +60,15 @@ public final class R {
         public static final int email = 0x7f090074;
         public static final int icon_only = 0x7f0900b2;
         public static final int light = 0x7f0900be;
-        public static final int none = 0x7f0900ef;
-        public static final int normal = 0x7f0900f0;
-        public static final int radio = 0x7f090103;
-        public static final int standard = 0x7f090151;
-        public static final int text = 0x7f090158;
-        public static final int text2 = 0x7f090159;
-        public static final int toolbar = 0x7f090165;
-        public static final int wide = 0x7f090191;
-        public static final int wrap_content = 0x7f090194;
+        public static final int none = 0x7f0900ed;
+        public static final int normal = 0x7f0900ee;
+        public static final int radio = 0x7f090101;
+        public static final int standard = 0x7f09014f;
+        public static final int text = 0x7f090156;
+        public static final int text2 = 0x7f090157;
+        public static final int toolbar = 0x7f090163;
+        public static final int wide = 0x7f09018f;
+        public static final int wrap_content = 0x7f090192;
     }
     public static final class integer {
         public static final int google_play_services_version = 0x7f0a0007;
